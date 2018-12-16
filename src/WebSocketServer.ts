@@ -1,6 +1,6 @@
 import * as Http from 'http';
 import * as WebSocket from 'websocket';
-import { Message } from './packetHandling/Message';
+import { Message } from './packets/Message';
 
 export class WebSocketServer {
 
@@ -37,11 +37,12 @@ export class WebSocketServer {
         const messageHandler = new Message();
         const connection = request.accept(WebSocketServer.PROTOCOL, request.origin);
         const index = this.clients.push(connection) - 1;
+        const user = this.clients[index];
     
         console.log('\x1b[33m%s\x1b[0m', `New connection: ${index}`); 
     
         connection.on('message', (message) => {
-            const response = messageHandler.handle(message);
+            messageHandler.handle(user, message);
         });
     
         connection.on('close', (connection) => {

@@ -15,17 +15,18 @@ export class BinaryParser {
         return this;
     }
 
-    public int8(fieldId: string): BinaryParser {
+    public byte(fieldId: string): BinaryParser {
         this.parser.int8(fieldId);
         return this;
     }
 
-    public int16(fieldId: string): BinaryParser {
+    public integer(fieldId: string): BinaryParser {
         this.parser.int16(fieldId);
         return this;
     }
 
-    public parse(payload: Buffer): any {
+    public parse(payload?: Buffer): any {
+        if (!payload) return null;
         return this.parser.parse(payload);
     }
 }

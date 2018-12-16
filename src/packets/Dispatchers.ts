@@ -1,6 +1,6 @@
-import { IDispatchable } from "./IDispatchable";
-import { ThrowDices } from "./ThrowDices";
-import { LoginNewChar } from "./LoginNewChar";
+import { IDispatchable } from "./dispatcher/IDispatchable";
+import { ThrowDices } from "./dispatcher/ThrowDices";
+import { LoginNewChar } from "./dispatcher/LoginNewChar";
 
 const dispatchers = {
     1: ThrowDices,
@@ -13,7 +13,7 @@ export module Dispatchers {
         if (dispatcher) {
             return new dispatcher();
         } else {
-            // TODO: Throw No packetId found
+            throw new Error(`No dispatcher found for packet: ${packetId}`);
         }
     }
 }

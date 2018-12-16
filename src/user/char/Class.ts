@@ -8,6 +8,6 @@ export enum Class {
     Druid = 7,
     // Bandit = 8,
     Paladin = 9,
-    // Shooter = 10,
+    Hunter = 10,
     // Pirate = 11
 }

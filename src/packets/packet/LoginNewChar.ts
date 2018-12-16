@@ -1,6 +1,6 @@
-import { Gender } from "../../../character/Gender";
-import { Race } from "../../../character/Race";
-import { Class } from "../../../character/Class";
+import { Race } from "../../user/char/Race";
+import { Gender } from "../../user/char/Gender";
+import { Class } from "../../user/char/Class";
 
 export class LoginNewChar {
 
