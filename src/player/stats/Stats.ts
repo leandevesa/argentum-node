@@ -20,8 +20,8 @@ export class Stats {
     private _elu: number; // TODO: Modificar, que significa elu?
     private _skills: Array<number>;
     private _attributes: Attributes; // TODO: Modificar estructura
-    private _spells: Spells; // TODO: Modificar estructura
-    private _userKillCount: number;
+    private _spells: Spells;
+    private _playerKillCount: number;
 	private _skillPts: number;
 	private _expSkills: Array<number>; // TODO: Modificar estructura, que es expSkills?
     private _eluSkills: Array<number>; // TODO: Modificar estructura, que es eluSkills?
@@ -180,11 +180,11 @@ export class Stats {
 	}
 
     /**
-     * Getter userKillCount
+     * Getter playerKillCount
      * @return {number}
      */
-	public get userKillCount(): number {
-		return this._userKillCount;
+	public get playerKillCount(): number {
+		return this._playerKillCount;
 	}
 
     /**
@@ -364,11 +364,11 @@ export class Stats {
 	}
 
     /**
-     * Setter userKillCount
+     * Setter playerKillCount
      * @param {number} value
      */
-	public set userKillCount(value: number) {
-		this._userKillCount = value;
+	public set playerKillCount(value: number) {
+		this._playerKillCount = value;
 	}
 
     /**

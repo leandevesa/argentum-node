@@ -7,7 +7,7 @@ import { Stats } from "./stats/Stats";
 import { Inventory } from "./inventory/Inventory";
 import { Position } from "./Position";
 
-export class User {
+export class Player {
 
     private _name: string;
     private _class: Class;

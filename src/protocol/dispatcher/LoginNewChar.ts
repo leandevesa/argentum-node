@@ -1,18 +1,18 @@
 import { BinaryParser } from '../BinaryParser';
 import { IDispatchable } from './IDispatchable';
-import { LoginNewChar as LoginNewCharPacket } from '../packet/LoginNewChar';
+import { LoginNewCharDTO } from '../packets/LoginNewCharDTO';
 import { Login } from '../../login/Login';
 
 export class LoginNewChar implements IDispatchable {
 
-    public dispatch(user: any, payload?: Buffer) {
-        const newCharDef: LoginNewCharPacket = this.parsePayload(payload);
+    public dispatch(clientIndex: number, payload?: Buffer) {
+        const newCharDef: LoginNewCharDTO = this.parsePayload(payload);
         const login: Login = new Login();
 
-        login.newUser(user, newCharDef);
+        login.newUser(clientIndex, newCharDef);
     }
 
-    private parsePayload(payload?: Buffer): LoginNewCharPacket {
+    private parsePayload(payload?: Buffer): LoginNewCharDTO {
         const newCharParser: BinaryParser = new BinaryParser()
             .string("username")
             .string("password")

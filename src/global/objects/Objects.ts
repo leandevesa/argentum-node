@@ -2,7 +2,7 @@ import { Weapon } from "./Weapon";
 import { Armor } from "./Armor";
 import { Shield } from "./Shield";
 import { Helmet } from "./Helmet";
-import { Class } from "../../user/char/Class";
+import { Class } from "../../player/char/Class";
 
 export module Objects {
 

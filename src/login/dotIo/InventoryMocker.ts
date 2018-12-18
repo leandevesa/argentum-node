@@ -1,55 +1,55 @@
 import { Objects } from "../../global/objects/Objects";
-import { User } from "../../user/User";
-import { Inventory } from "../../user/inventory/Inventory";
-import { Class } from "../../user/char/Class";
-import { Equipped } from "../../user/inventory/Equipped";
-import { Item } from "../../user/inventory/Item";
-import { Race } from "../../user/char/Race";
+import { Player } from "../../player/Player";
+import { Inventory } from "../../player/inventory/Inventory";
+import { Class } from "../../player/char/Class";
+import { Equipped } from "../../player/inventory/Equipped";
+import { Item } from "../../player/inventory/Item";
+import { Race } from "../../player/char/Race";
 import { Utils } from "../../global/Utils";
 
 export module InventoryMocker {
 
-    export function mock(user: User) {
+    export function mock(player: Player) {
 
         const inventory: Inventory = new Inventory();
 
         addPotions(inventory);
-        addWeapons(inventory, user.class);
-        addArmor(inventory, user.class , !Utils.isLittleRace(user.race));
-        addShield(inventory, user.class);
-        addHelmet(inventory, user.class);
+        addWeapons(inventory, player.class);
+        addArmor(inventory, player.class , !Utils.isLittleRace(player.race));
+        addShield(inventory, player.class);
+        addHelmet(inventory, player.class);
         addFood(inventory);
 
-        loadUser(user, inventory);
+        loadPlayer(player, inventory);
     }
 
-    function loadUser(user: User, inventory: Inventory) {
+    function loadPlayer(player: Player, inventory: Inventory) {
         if (inventory.equipped.weapon) {
-            const weapon = Objects.getWeapon(inventory.equipped.weapon.id, user.class);
+            const weapon = Objects.getWeapon(inventory.equipped.weapon.id, player.class);
             if (weapon) {
-                user.char.weaponAnim = weapon.getAnim(user.race);
+                player.char.weaponAnim = weapon.getAnim(player.race);
             }
         }
 
         if (inventory.equipped.armor) {
             const armor = Objects.getArmor(inventory.equipped.armor.id);
             if (armor) {
-                user.char.bodyAnim = armor.getAnim();
-                user.flags.naked = false;
+                player.char.bodyAnim = armor.getAnim();
+                player.flags.naked = false;
             }
         }
 
         if (inventory.equipped.shield) { 
             const shield = Objects.getShield(inventory.equipped.shield.id);
             if (shield) {
-                user.char.shieldAnim = shield.getAnim();
+                player.char.shieldAnim = shield.getAnim();
             }
         }
 
         if (inventory.equipped.helmet) {
             const helmet = Objects.getHelmet(inventory.equipped.helmet.id);
             if (helmet) {
-                user.char.helmetAnim = helmet.getAnim();
+                player.char.helmetAnim = helmet.getAnim();
             }
         }
     }
@@ -61,10 +61,10 @@ export module InventoryMocker {
         addItem(inventory, 43);
     }
 
-    function addHelmet(inventory: Inventory, userClass: Class) {
+    function addHelmet(inventory: Inventory, playerClass: Class) {
         let helmetId: number | null = null;
 
-        switch (userClass) {
+        switch (playerClass) {
             case Class.Wizard:
                 helmetId = 662; // sombrero de mago
                 break;
@@ -93,10 +93,10 @@ export module InventoryMocker {
         }
     }
 
-    function addShield(inventory: Inventory, userClass: Class) {
+    function addShield(inventory: Inventory, playerClass: Class) {
         let shieldId: number | null = null;
     
-        switch (userClass) {
+        switch (playerClass) {
             case Class.Paladin:
             case Class.Warrior:
                 shieldId = 130; // escudo de plata
@@ -122,11 +122,11 @@ export module InventoryMocker {
         }
     }
 
-    function addArmor(inventory: Inventory, userClass: Class, isTall: boolean) {
+    function addArmor(inventory: Inventory, playerClass: Class, isTall: boolean) {
 
         let armorId: number = 0;
     
-        switch (userClass) {
+        switch (playerClass) {
             case Class.Wizard: {
                 armorId = isTall ? 614 : 932;
                 break;
@@ -158,11 +158,11 @@ export module InventoryMocker {
         }
     }
 
-    function addWeapons(inventory: Inventory, userClass: Class) {
+    function addWeapons(inventory: Inventory, playerClass: Class) {
         
         let weaponId;
 
-        switch (userClass) {
+        switch (playerClass) {
             case Class.Wizard:
                 weaponId = 660; // engarzado
                 break;
@@ -196,7 +196,7 @@ export module InventoryMocker {
             inventory.equipped.weapon = new Equipped(weaponSlot, weaponId);
         }
 
-        switch (userClass) {
+        switch (playerClass) {
             case Class.Hunter:
                 const hArrowsSlot = addItem(inventory, 553); // Flechas
                 const heavyArrows = inventory.getItem(hArrowsSlot);

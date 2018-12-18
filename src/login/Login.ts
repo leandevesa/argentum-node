@@ -1,15 +1,16 @@
-import { UserMocker } from "./dotIo/UserMocker";
-import { User } from "../user/User";
-import { LoginNewChar } from "../packets/packet/LoginNewChar";
+import { PlayerMocker } from "./dotIo/PlayerMocker";
+import { Player } from "../player/Player";
+import { LoginNewCharDTO } from "../protocol/packets/LoginNewCharDTO";
+import { Game } from "../global/game/Game";
 
 export class Login {
 
-    public newUser(user: User, charDefinition: LoginNewChar) {
+    public newUser(clientIndex: number, charDefinition: LoginNewCharDTO) {
 
         // TODO: Check if user exists
-
         // TODO: Save new user
 
-        UserMocker.mock(user, charDefinition);
+        const player: Player = PlayerMocker.mock(charDefinition);
+        Game.setClientPlayer(clientIndex, player);
     }
 }

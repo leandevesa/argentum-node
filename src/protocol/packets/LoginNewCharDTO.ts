@@ -1,8 +1,8 @@
-import { Race } from "../../user/char/Race";
-import { Gender } from "../../user/char/Gender";
-import { Class } from "../../user/char/Class";
+import { Race } from "../../player/char/Race";
+import { Gender } from "../../player/char/Gender";
+import { Class } from "../../player/char/Class";
 
-export class LoginNewChar {
+export class LoginNewCharDTO {
 
     private _username: string;
     private _password: string;
@@ -20,87 +20,43 @@ export class LoginNewChar {
         return this._homeland;
     }
 
-    public set homeland(value: number) {
-        this._homeland = value;
-    }
-
     public get mail(): string {
         return this._mail;
-    }
-
-    public set mail(value: string) {
-        this._mail = value;
     }
 
     public get head(): number {
         return this._head;
     }
 
-    public set head(value: number) {
-        this._head = value;
-    }
-
     public get class(): number {
         return this._class;
-    }
-
-    public set class(value: number) {
-        this._class = value;
     }
     
     public get username(): string {
         return this._username;
     }
 
-    public set username(value: string) {
-        this._username = value;
-    }
-
     public get password(): string {
         return this._password;
-    }
-
-    public set password(value: string) {
-        this._password = value;
     }
 
     public get verA(): number {
         return this._verA;
     }
 
-    public set verA(value: number) {
-        this._verA = value;
-    }
-
     public get verB(): number {
         return this._verB;
-    }
-
-    public set verB(value: number) {
-        this._verB = value;
     }
 
     public get verC(): number {
         return this._verC;
     }
 
-    public set verC(value: number) {
-        this._verC = value;
-    }
-
     public get race(): number {
         return this._race;
     }
 
-    public set race(value: number) {
-        this._race = value;
-    }
-
     public get gender(): number {
         return this._gender;
-    }
-
-    public set gender(value: number) {
-        this._gender = value;
     }
 }

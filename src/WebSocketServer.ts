@@ -1,6 +1,7 @@
 import * as Http from 'http';
 import * as WebSocket from 'websocket';
-import { Message } from './packets/Message';
+import { Message } from './protocol/Message';
+import { Game } from './global/game/Game';
 
 export class WebSocketServer {
 
@@ -34,20 +35,24 @@ export class WebSocketServer {
     }
     
     private handleNewConnection(request: WebSocket.request) {
-        const messageHandler = new Message();
-        const connection = request.accept(WebSocketServer.PROTOCOL, request.origin);
-        const index = this.clients.push(connection) - 1;
-        const user = this.clients[index];
+
+        const connection: WebSocket.connection = request.accept(WebSocketServer.PROTOCOL,
+                                                                request.origin);
+        const clientIndex: number | null = Game.addClientAndGetIndex(connection);
     
-        console.log('\x1b[33m%s\x1b[0m', `New connection: ${index}`); 
-    
-        connection.on('message', (message) => {
-            messageHandler.handle(user, message);
-        });
-    
-        connection.on('close', (connection) => {
-            console.log('connection lost');
-            this.clients.splice(index, 1);
-        });
+        if (clientIndex) {
+            console.log('\x1b[33m%s\x1b[0m', `New connection: ${clientIndex}`); 
+        
+            connection.on('message', (message) => {
+                Message.handle(clientIndex, message);
+            });
+        
+            connection.on('close', (connection) => {
+                console.log('connection lost');
+                Game.removeClient(clientIndex);
+            });
+        } else {
+            // TODO : Server lleno -> ver de cerrar request
+        }
     }
 }

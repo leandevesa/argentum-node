@@ -1,5 +1,5 @@
 import { Utils } from "../Utils";
-import { Race } from "../../user/char/Race";
+import { Race } from "../../player/char/Race";
 
 export class Weapon {
 
