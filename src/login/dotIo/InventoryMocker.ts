@@ -4,7 +4,6 @@ import { Inventory } from "../../player/inventory/Inventory";
 import { Class } from "../../player/char/Class";
 import { Equipped } from "../../player/inventory/Equipped";
 import { Item } from "../../player/inventory/Item";
-import { Race } from "../../player/char/Race";
 import { Utils } from "../../global/Utils";
 
 export module InventoryMocker {

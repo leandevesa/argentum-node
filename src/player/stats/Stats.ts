@@ -2,6 +2,9 @@ import { Attributes } from "../Attributes";
 import { Spells } from "./Spells";
 
 export class Stats {
+
+    public static readonly MAX_HP = 999;
+
 	private _gold: number;
 	private _maxHp: number;
 	private _minHp: number;

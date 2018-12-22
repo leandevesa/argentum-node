@@ -1,28 +1,29 @@
 import { RaceModifier } from "./RaceModifier";
 import { Race } from "../../player/char/Race";
+import { Class } from "../../player/char/Class";
+import { HPDistribution } from "./HPDistribution";
 
 export module Balance {
 
     let loaded: boolean = false;
-    const balance = {
-        "raceModifier": {
-            1: 10,
-            2: 10,
-            3: 10,
-            4: 10
-        }
-    };
-
-    function checkIfLoaded(): void {
-        // TODO: if not loaded -> exception
-    }
+    const raceModifiers: Array<RaceModifier> = new Array();
+    const hpModifier: Array<number> = new Array();
+    let hpDistribution: HPDistribution;
 
     export function load(): void {
-        // TODO: if loaded -> exception
+        // TODO: load file
         loaded = true;
     }
 
     export function getRaceModifier(race: Race): RaceModifier {
-        return balance.raceModifier[race];
+        return raceModifiers[race];
+    }
+
+    export function getHPModifier(playerClass: Class): number {
+        return hpModifier[playerClass];
+    }
+
+    export function getHPDistribution(): HPDistribution {
+        return hpDistribution;
     }
 }

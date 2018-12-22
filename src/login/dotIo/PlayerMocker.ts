@@ -33,7 +33,7 @@ export module PlayerMocker {
 
         player.stats.exp = 47980556;
         
-        level.verifyLevelUp(player, false);
+        level.verifyLevel(player, false);
         
         player.stats.minMan = player.stats.maxMan;
         player.stats.minSta = player.stats.maxSta;
