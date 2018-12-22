@@ -1,11 +1,9 @@
 export class FixedArray<T> {
-
-    private _size: number;
+    
     private _array: Array<T | null>;
     private _freeIndexes: Array<number>;
 
     constructor(size: number) {
-        this._size = size;
         this._array = new Array(size);
         this._freeIndexes = this.createFreeIndexes(size);
     }

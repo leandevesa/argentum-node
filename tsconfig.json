@@ -4,7 +4,8 @@
       "module": "commonjs",
       "outDir": "dist",
       "strictNullChecks": true,
-      "sourceMap": true
+      "sourceMap": true,
+      "experimentalDecorators": true
     },
     "include": [
         "src/**/*.ts", "src/1.SocketMessage.js"

@@ -1,7 +1,7 @@
 import { PlayerMocker } from "./dotIo/PlayerMocker";
 import { Player } from "../player/Player";
-import { LoginNewCharDTO } from "../protocol/packets/LoginNewCharDTO";
-import { Game } from "../global/game/Game";
+import { LoginNewCharDTO } from "../protocol/receive/packets/LoginNewCharDTO";
+import { Game } from "../game/Game";
 
 export class Login {
 

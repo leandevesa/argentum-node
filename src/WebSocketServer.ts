@@ -1,7 +1,7 @@
 import * as Http from 'http';
 import * as WebSocket from 'websocket';
-import { Message } from './protocol/Message';
-import { Game } from './global/game/Game';
+import { Message } from './protocol/receive/Message';
+import { Game } from './game/Game';
 
 export class WebSocketServer {
 

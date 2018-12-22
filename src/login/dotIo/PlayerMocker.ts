@@ -3,10 +3,11 @@ import { RaceModifier } from "../../global/balance/RaceModifier";
 import { InventoryMocker } from "./InventoryMocker";
 import { Player } from "../../player/Player";
 import { Class } from "../../player/char/Class";
-import { LoginNewCharDTO } from "../../protocol/packets/LoginNewCharDTO";
 import { Heading } from "../../player/char/Heading";
 import { Body } from "../../player/char/Body";
 import { Attributes } from "../../player/Attributes";
+import { LoginNewCharDTO } from "../../protocol/receive/packets/LoginNewCharDTO";
+import { Level } from "../../game/Level";
 
 export module PlayerMocker {
 
@@ -26,8 +27,12 @@ export module PlayerMocker {
     }
 
     function mockLevel(player: Player) {
+        const level:Level = new Level();
+
         player.stats.exp = 47980556;
-        //CheckPlayerLevel(PlayerIndex, false);
+        
+        level.verifyLevelUp(player, false);
+        
         player.stats.minMan = player.stats.maxMan;
         player.stats.minSta = player.stats.maxSta;
     }
