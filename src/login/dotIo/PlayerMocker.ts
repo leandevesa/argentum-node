@@ -8,13 +8,16 @@ import { Body } from "../../player/char/Body";
 import { Attributes } from "../../player/Attributes";
 import { LoginNewCharDTO } from "../../protocol/receive/packets/LoginNewCharDTO";
 import { Level } from "../../game/Level";
+import { Race } from "../../player/char/Race";
 
 export module PlayerMocker {
 
     export function mock(newCharDef: LoginNewCharDTO, clientIndex: number): Player {
 
+        const race: Race = new Race(newCharDef.race); 
+
         const player: Player = new Player(newCharDef.username, newCharDef.class,
-                                          newCharDef.race, newCharDef.gender,
+                                          race, newCharDef.gender,
                                           newCharDef.mail, clientIndex);
 
         mockIni(player, newCharDef);

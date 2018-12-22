@@ -16,7 +16,7 @@ export module Balance {
     }
 
     export function getRaceModifier(race: Race): RaceModifier {
-        return raceModifiers[race];
+        return raceModifiers[race.type];
     }
 
     export function getHPModifier(playerClass: Class): number {

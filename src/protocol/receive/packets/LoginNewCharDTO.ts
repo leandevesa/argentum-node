@@ -1,4 +1,4 @@
-import { Race } from "../../../player/char/Race";
+import { RaceType } from "../../../player/char/Race";
 import { Gender } from "../../../player/char/Gender";
 import { Class } from "../../../player/char/Class";
 
@@ -9,7 +9,7 @@ export class LoginNewCharDTO {
     private _verA: number; // TODO: Delete
     private _verB: number; // TODO: Delete
     private _verC: number; // TODO: Delete
-    private _race: Race;
+    private _race: RaceType;
     private _gender: Gender;
     private _class: Class;
     private _head: number;

@@ -4,7 +4,6 @@ import { Inventory } from "../../player/inventory/Inventory";
 import { Class } from "../../player/char/Class";
 import { Equipped } from "../../player/inventory/Equipped";
 import { Item } from "../../player/inventory/Item";
-import { Utils } from "../../global/Utils";
 
 export module InventoryMocker {
 
@@ -14,7 +13,7 @@ export module InventoryMocker {
 
         addPotions(inventory);
         addWeapons(inventory, player.class);
-        addArmor(inventory, player.class , !Utils.isLittleRace(player.race));
+        addArmor(inventory, player.class , !player.race.isLittle());
         addShield(inventory, player.class);
         addHelmet(inventory, player.class);
         addFood(inventory);
