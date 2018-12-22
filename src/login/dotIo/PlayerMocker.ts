@@ -11,9 +11,11 @@ import { Level } from "../../game/Level";
 
 export module PlayerMocker {
 
-    export function mock(newCharDef: LoginNewCharDTO): Player {
+    export function mock(newCharDef: LoginNewCharDTO, clientIndex: number): Player {
 
-        const player: Player = new Player();
+        const player: Player = new Player(newCharDef.username, newCharDef.class,
+                                          newCharDef.race, newCharDef.gender,
+                                          newCharDef.mail, clientIndex);
 
         mockIni(player, newCharDef);
         mockFlags(player);
@@ -81,11 +83,6 @@ export module PlayerMocker {
     }
 
     function mockIni(player: Player, definition: LoginNewCharDTO): void {
-        player.name = definition.username;
-        player.class = definition.class;
-        player.race = definition.race;
-        player.gender = definition.gender;
-        player.mail = definition.mail;
         player.char.heading = Heading.South;
         player.char.bodyAnim = Body[Body[definition.race]]; // OK?
         player.char.head = definition.head;

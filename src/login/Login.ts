@@ -10,7 +10,7 @@ export class Login {
         // TODO: Check if user exists
         // TODO: Save new user
 
-        const player: Player = PlayerMocker.mock(charDefinition);
+        const player: Player = PlayerMocker.mock(charDefinition, clientIndex);
         Game.setClientPlayer(clientIndex, player);
     }
 }
