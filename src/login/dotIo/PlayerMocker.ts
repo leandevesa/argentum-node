@@ -2,7 +2,7 @@ import { Balance } from "../../global/balance/Balance";
 import { RaceModifier } from "../../global/balance/RaceModifier";
 import { InventoryMocker } from "./InventoryMocker";
 import { Player } from "../../player/Player";
-import { Class } from "../../player/char/Class";
+import { ClassType, Class } from "../../player/char/Class";
 import { Heading } from "../../player/char/Heading";
 import { Body } from "../../player/char/Body";
 import { Attributes } from "../../player/Attributes";
@@ -15,8 +15,9 @@ export module PlayerMocker {
     export function mock(newCharDef: LoginNewCharDTO, clientIndex: number): Player {
 
         const race: Race = new Race(newCharDef.race); 
+        const playerClass: Class = new Class(newCharDef.class);
 
-        const player: Player = new Player(newCharDef.username, newCharDef.class,
+        const player: Player = new Player(newCharDef.username, playerClass,
                                           race, newCharDef.gender,
                                           newCharDef.mail, clientIndex);
 
@@ -64,15 +65,15 @@ export module PlayerMocker {
     }
 
     function mockSpells(player: Player): void {
-        const playerClass = player.class;
+        const playerClass = player.class.type;
 
-        if ((playerClass == Class.Warrior) || (playerClass == Class.Hunter)) return;
+        if ((playerClass == ClassType.Warrior) || (playerClass == ClassType.Hunter)) return;
         
         player.stats.spells.add(10); // remover paralisis
         player.stats.spells.add(24); // inmovilizar
 
-        if ((playerClass == Class.Cleric) || (playerClass == Class.Wizard) || 
-            (playerClass == Class.Bard) || (playerClass == Class.Druid)) {
+        if ((playerClass == ClassType.Cleric) || (playerClass == ClassType.Wizard) || 
+            (playerClass == ClassType.Bard) || (playerClass == ClassType.Druid)) {
             player.stats.spells.add(25); // apocalipsis
         }
 
@@ -136,19 +137,19 @@ export module PlayerMocker {
         player.stats.maxHun = 100;
         player.stats.minHun = 100;
 
-        switch (player.class) {
+        switch (player.class.type) {
 
-            case (Class.Wizard):
+            case (ClassType.Wizard):
                 const mana = player.stats.attributes.intelligence * 3;
                 player.stats.maxMan = mana;
                 player.stats.minMan = mana;
                 break;
 
-            case (Class.Cleric):
-            case (Class.Druid):
-            case (Class.Bard):
-            case (Class.Assassin):
-            // case (Class.Bandit): TODO: No se usa?
+            case (ClassType.Cleric):
+            case (ClassType.Druid):
+            case (ClassType.Bard):
+            case (ClassType.Assassin):
+            // case (ClassType.Bandit): TODO: No se usa?
                 player.stats.maxMan = 50;
                 player.stats.minMan = 50;
 

@@ -20,7 +20,7 @@ export module Balance {
     }
 
     export function getHPModifier(playerClass: Class): number {
-        return hpModifier[playerClass];
+        return hpModifier[playerClass.type];
     }
 
     export function getHPDistribution(): HPDistribution {

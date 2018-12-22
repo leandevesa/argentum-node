@@ -1,4 +1,4 @@
-export enum Class {
+export enum ClassType {
     Wizard = 1,
     Cleric = 2,
     Warrior = 3,
@@ -10,4 +10,17 @@ export enum Class {
     Paladin = 9,
     Hunter = 10,
     // Pirate = 11
+}
+
+export class Class {
+
+    private _type: ClassType;
+    
+    constructor(type: ClassType) {
+        this._type = type;
+    }
+    
+	public get type(): ClassType {
+		return this._type;
+	}
 }

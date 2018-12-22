@@ -1,6 +1,6 @@
 import { RaceType } from "../../../player/char/Race";
 import { Gender } from "../../../player/char/Gender";
-import { Class } from "../../../player/char/Class";
+import { ClassType } from "../../../player/char/Class";
 
 export class LoginNewCharDTO {
 
@@ -11,7 +11,7 @@ export class LoginNewCharDTO {
     private _verC: number; // TODO: Delete
     private _race: RaceType;
     private _gender: Gender;
-    private _class: Class;
+    private _class: ClassType;
     private _head: number;
     private _mail: string;
     private _homeland: number; // TODO: Delete

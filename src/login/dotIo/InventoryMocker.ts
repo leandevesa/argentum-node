@@ -1,7 +1,7 @@
 import { Objects } from "../../global/objects/Objects";
 import { Player } from "../../player/Player";
 import { Inventory } from "../../player/inventory/Inventory";
-import { Class } from "../../player/char/Class";
+import { Class, ClassType } from "../../player/char/Class";
 import { Equipped } from "../../player/inventory/Equipped";
 import { Item } from "../../player/inventory/Item";
 
@@ -62,21 +62,21 @@ export module InventoryMocker {
     function addHelmet(inventory: Inventory, playerClass: Class) {
         let helmetId: number | null = null;
 
-        switch (playerClass) {
-            case Class.Wizard:
+        switch (playerClass.type) {
+            case ClassType.Wizard:
                 helmetId = 662; // sombrero de mago
                 break;
-            case Class.Paladin:
-            case Class.Warrior:
-            case Class.Cleric:
-            case Class.Assassin:
-            case Class.Hunter:
+            case ClassType.Paladin:
+            case ClassType.Warrior:
+            case ClassType.Cleric:
+            case ClassType.Assassin:
+            case ClassType.Hunter:
                 helmetId = 405; // casco de plata
                 break;
-            case Class.Bard:
+            case ClassType.Bard:
                 helmetId = 132; // casco de hierro
                 break;
-            case Class.Druid:
+            case ClassType.Druid:
                 helmetId = 1003; // casco de oso
                 break;
         }
@@ -94,18 +94,18 @@ export module InventoryMocker {
     function addShield(inventory: Inventory, playerClass: Class) {
         let shieldId: number | null = null;
     
-        switch (playerClass) {
-            case Class.Paladin:
-            case Class.Warrior:
+        switch (playerClass.type) {
+            case ClassType.Paladin:
+            case ClassType.Warrior:
                 shieldId = 130; // escudo de plata
                 break;
-            case Class.Cleric:
-            case Class.Bard:
+            case ClassType.Cleric:
+            case ClassType.Bard:
                 shieldId = 128; // escudo de hierro
                 break;
-            case Class.Assassin:
-            case Class.Hunter:
-            case Class.Bard:
+            case ClassType.Assassin:
+            case ClassType.Hunter:
+            case ClassType.Bard:
                 shieldId = 404; // escudo de tortuga
                 break;
         }
@@ -124,24 +124,24 @@ export module InventoryMocker {
 
         let armorId: number = 0;
     
-        switch (playerClass) {
-            case Class.Wizard: {
+        switch (playerClass.type) {
+            case ClassType.Wizard: {
                 armorId = isTall ? 614 : 932;
                 break;
             }
-            case Class.Cleric:
-            case Class.Paladin:
-            case Class.Warrior:
+            case ClassType.Cleric:
+            case ClassType.Paladin:
+            case ClassType.Warrior:
                 armorId = isTall ? 195 : 243; // placas / placas
                 break;
-            case Class.Assassin:
+            case ClassType.Assassin:
                 armorId = isTall ? 356 : 854; // armadura de las sombras
                 break;
-            case Class.Bard:
-            case Class.Druid:
+            case ClassType.Bard:
+            case ClassType.Druid:
                 armorId = isTall ? 519 : 939; // legendaria / Tunica de gala roja
                 break;
-            case Class.Hunter:
+            case ClassType.Hunter:
                 armorId = isTall ? 360 : 648; // armadura de cazador
                 break;
         }
@@ -160,27 +160,27 @@ export module InventoryMocker {
         
         let weaponId;
 
-        switch (playerClass) {
-            case Class.Wizard:
+        switch (playerClass.type) {
+            case ClassType.Wizard:
                 weaponId = 660; // engarzado
                 break;
-            case Class.Cleric:
-            case Class.Paladin:
+            case ClassType.Cleric:
+            case ClassType.Paladin:
                 weaponId = 129; // 2f
                 break;
-            case Class.Warrior:
+            case ClassType.Warrior:
                 weaponId = 403; // esp. de plata
                 break;
-            case Class.Assassin:
+            case ClassType.Assassin:
                 weaponId = 367; // daga +4
                 break;
-            case Class.Bard:
+            case ClassType.Bard:
                 weaponId = 399; // cimitarra
                 break;
-            case Class.Druid:
+            case ClassType.Druid:
                 weaponId = 366; // daga +3
                 break;
-            case Class.Hunter:
+            case ClassType.Hunter:
                 weaponId = 665;
                 break;
         }
@@ -194,8 +194,8 @@ export module InventoryMocker {
             inventory.equipped.weapon = new Equipped(weaponSlot, weaponId);
         }
 
-        switch (playerClass) {
-            case Class.Hunter:
+        switch (playerClass.type) {
+            case ClassType.Hunter:
                 const hArrowsSlot = addItem(inventory, 553); // Flechas
                 const heavyArrows = inventory.getItem(hArrowsSlot);
                 if (heavyArrows) {
@@ -204,7 +204,7 @@ export module InventoryMocker {
                 }
                 addItem(inventory, 126); // Hacha larga de guerra 
                 break;
-            case Class.Warrior:
+            case ClassType.Warrior:
                 const lArrowsSlot = addItem(inventory, 480); // Flechas
                 const lightArrows = inventory.getItem(lArrowsSlot);
                 if (lightArrows) {
@@ -214,7 +214,7 @@ export module InventoryMocker {
                 addItem(inventory, 664); // Arco compuesto
                 addItem(inventory, 365); // Daga+2
                 break;
-            case Class.Bard:
+            case ClassType.Bard:
                 const laudSlot = addItem(inventory, 1049); //laud magico
                 const laud = inventory.getItem(laudSlot);
                 if (laud) {
@@ -223,7 +223,7 @@ export module InventoryMocker {
                 }
                 addItem(inventory, 366); // daga +3
                 break;
-            case Class.Druid:
+            case ClassType.Druid:
                 const fluteSlot = addItem(inventory, 1050); //flauta elfica
                 const elficFlute = inventory.getItem(fluteSlot);
                 if (elficFlute) {
