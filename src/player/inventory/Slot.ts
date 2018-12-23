@@ -4,6 +4,16 @@ export class Slot {
 
     private _item: Item | null;
 
+    constructor(private _id: number) { }
+
+    /**
+     * Getter id
+     * @return {number}
+     */
+	public get id(): number {
+		return this._id;
+	}
+
     /**
      * Getter item
      * @return {Item }

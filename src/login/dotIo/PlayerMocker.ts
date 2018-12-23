@@ -1,5 +1,4 @@
 import { Balance } from "../../global/balance/Balance";
-import { RaceModifier } from "../../global/balance/RaceModifier";
 import { InventoryMocker } from "./InventoryMocker";
 import { Player } from "../../player/Player";
 import { ClassType, Class } from "../../player/char/Class";
@@ -7,7 +6,7 @@ import { Heading } from "../../player/char/Heading";
 import { Body } from "../../player/char/Body";
 import { Attributes } from "../../player/Attributes";
 import { LoginNewCharDTO } from "../../protocol/receive/packets/LoginNewCharDTO";
-import { Level } from "../../game/Level";
+import { LevelVerifier } from "../../game/LevelVerifier";
 import { Race, RaceType } from "../../player/char/Race";
 import { Stats } from "../../player/stats/Stats";
 import { Mana } from "../../player/stats/Mana";
@@ -22,9 +21,11 @@ import { Char } from "../../player/char/Char";
 import { Position } from "../../player/Position";
 import { Inventory } from "../../player/inventory/Inventory";
 import { Exp } from "../../player/stats/Exp";
+import { RaceModifier } from "../../global/balance/RaceModifiers";
 
 export class PlayerMocker {
 
+    private levelVerifier: LevelVerifier = new LevelVerifier();
     private inventoryMocker: InventoryMocker = new InventoryMocker();
 
     public mock(newCharDef: LoginNewCharDTO, clientIndex: number): Player {
@@ -41,10 +42,9 @@ export class PlayerMocker {
                                           playerClass, race, newCharDef.gender,
                                           stats, char, position, inventory, clientIndex);
 
-        this.inventoryMocker.equipPlayer(player);
-
         this.mockFlags(player);
-        this.mockLevel(player);
+        this.inventoryMocker.equipPlayer(player);
+        this.levelVerifier.verify(player, false);
 
         return player;
     }
@@ -129,12 +129,6 @@ export class PlayerMocker {
         return new Stats(exp, mana, stamina, hp, hit, attributes, hunger, thirst,
                          skillPoints, gold, elu, level, playerKillCount, allSkills.skills,
                          allSkills.expSkills, allSkills.eluSkills, spells);
-    }
-
-    private mockLevel(player: Player) {
-        const level:Level = new Level();
-        
-        level.verifyLevel(player, false);
     }
 
     private mockPosition(): Position {

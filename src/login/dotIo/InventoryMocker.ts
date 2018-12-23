@@ -5,6 +5,7 @@ import { ClassType } from "../../player/char/Class";
 import { Equipped } from "../../player/inventory/Equipped";
 import { Item } from "../../player/inventory/Item";
 import { Race } from "../../player/char/Race";
+import { isNull } from "util";
 
 export class InventoryMocker {
 
@@ -193,7 +194,7 @@ export class InventoryMocker {
         
         /* Equipar arma */
         const weapon: Item | null = inventory.getItem(weaponSlot);
-        if (weapon) {
+        if (!isNull(weapon)) {
             weapon.equipped = true;
             inventory.equipped.weapon = new Equipped(weaponSlot, weaponId);
         }

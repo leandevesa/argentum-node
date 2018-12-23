@@ -1,6 +1,7 @@
 import { Slot } from "./Slot";
 import { Item } from "./Item";
 import { AllEquipped } from "./AllEquiped";
+import { isNull } from "util";
 
 export class Inventory {
 
@@ -12,14 +13,14 @@ export class Inventory {
 
     constructor () {
         for (let i = 0; i < this.MAX_ITEMS; i++) {
-            this._slots[i] = new Slot();
+            this._slots[i] = new Slot(i);
         }
     }
 
     public addItemAndGetSlot(item: Item): number | null {
         if (this._itemQuantity < this.MAX_ITEMS) {
             const slotId = this.getFirstFreeSlotNumber();
-            if (slotId) {
+            if (!isNull(slotId)) {
                 this._slots[slotId].item = item;
                 return slotId;
             }
@@ -33,10 +34,10 @@ export class Inventory {
     }
 
     private getFirstFreeSlotNumber(): number | null {
-        // TODO: Works?
-        this._slots.forEach((slot, i) => {
-            if (!slot.item) return i;
-        });
+        
+        const emptySlots: Array<Slot> = this._slots.filter(slot => !slot.item);
+
+        if (emptySlots.length) return emptySlots[0].id;
         
         return null;
     }

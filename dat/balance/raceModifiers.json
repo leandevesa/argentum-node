@@ -1,0 +1,37 @@
+{
+    "human": {
+        "strength": 1,
+        "agility": 1,
+        "intelligence": 0,
+        "charisma": 0,
+        "constitution": 2
+    },
+    "elf": {
+        "strength": -1,
+        "agility": 3,
+        "intelligence": 2,
+        "charisma": 2,
+        "constitution": 1
+    },
+    "darkElf": {
+        "strength": 2,
+        "agility": 3,
+        "intelligence": 2,
+        "charisma": -3,
+        "constitution": 0
+    },
+    "gnome": {
+        "strength": -2,
+        "agility": 3,
+        "intelligence": 4,
+        "charisma": 1,
+        "constitution": 0
+    },
+    "dwarf": {
+        "strength": 3,
+        "agility": 0,
+        "intelligence": -2,
+        "charisma": -2,
+        "constitution": 3
+    }
+}

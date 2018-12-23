@@ -4,14 +4,14 @@ import { PlayWavBuilder } from "../protocol/send/packets/PlayWav";
 import { WavId } from "../protocol/send/enums/WavId";
 import { Senders } from "../protocol/send/senders/Senders";
 
-export class Level {
+export class LevelVerifier {
 
     private readonly MAX_NEWBIE_LEVEL = 12;
     private readonly MAX_LEVEL = 255; // TODO: Max level 255???
 
     private dataSender: DataSender = new DataSender();
 
-    public verifyLevel(player: Player, notifyUser: boolean) {
+    public verify(player: Player, notifyUser: boolean) {
         
         const previousSkillPoints: number = player.stats.skillPoints;
         const wasNewbie: boolean = this.isNewbie(player);
