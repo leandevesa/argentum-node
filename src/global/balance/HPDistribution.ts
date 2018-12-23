@@ -18,7 +18,7 @@ export class HPDistribution {
     private getHalfDeviation(): number {
 		const random: number = Math.random() * 100;
 
-        // TODO: Load hd1,2,3,4 it only once when file is loaded
+        // TODO: Load hd1,2,3,4 only once when file is loaded
 
         const hd1 = this._halfDistribution1;
         const hd2 = hd1 + this._halfDistribution2;
@@ -38,7 +38,7 @@ export class HPDistribution {
     private getFullDeviation(): number {
 		const random: number = Math.random() * 100;
 
-        // TODO: Load f1,2,3,4 it only once when file is loaded
+        // TODO: Load f1,2,3,4 only once when file is loaded
 
         const f1 = this._fullDistribution1;
         const f2 = f1 + this._fullDistribution2;

@@ -5,12 +5,14 @@ import { Game } from "../game/Game";
 
 export class Login {
 
+    private playerMocker: PlayerMocker = new PlayerMocker();
+
     public newUser(clientIndex: number, charDefinition: LoginNewCharDTO) {
 
         // TODO: Check if user exists
         // TODO: Save new user
 
-        const player: Player = PlayerMocker.mock(charDefinition, clientIndex);
+        const player: Player = this.playerMocker.mock(charDefinition, clientIndex);
         Game.setClientPlayer(clientIndex, player);
     }
 }

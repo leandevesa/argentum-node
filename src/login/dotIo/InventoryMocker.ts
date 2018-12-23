@@ -1,38 +1,42 @@
 import { Objects } from "../../global/objects/Objects";
 import { Player } from "../../player/Player";
 import { Inventory } from "../../player/inventory/Inventory";
-import { Class, ClassType } from "../../player/char/Class";
+import { ClassType } from "../../player/char/Class";
 import { Equipped } from "../../player/inventory/Equipped";
 import { Item } from "../../player/inventory/Item";
+import { Race } from "../../player/char/Race";
 
-export module InventoryMocker {
+export class InventoryMocker {
 
-    export function mock(player: Player) {
+    public mockInventory(classType: ClassType, race: Race): Inventory {
 
         const inventory: Inventory = new Inventory();
 
-        addPotions(inventory);
-        addWeapons(inventory, player.class);
-        addArmor(inventory, player.class , !player.race.isLittle());
-        addShield(inventory, player.class);
-        addHelmet(inventory, player.class);
-        addFood(inventory);
+        this.addPotions(inventory);
+        this.addWeapons(inventory, classType);
+        this.addArmor(inventory, classType , !race.isLittle());
+        this.addShield(inventory, classType);
+        this.addHelmet(inventory, classType);
+        this.addFood(inventory);
 
-        loadPlayer(player, inventory);
+        return inventory;
     }
 
-    function loadPlayer(player: Player, inventory: Inventory) {
+    public equipPlayer(player: Player) {
+
+        const inventory: Inventory = player.inventory;
+
         if (inventory.equipped.weapon) {
             const weapon = Objects.getWeapon(inventory.equipped.weapon.id, player.class);
             if (weapon) {
-                player.char.weaponAnim = weapon.getAnim(player.race);
+                player.char.setWeapon(weapon.getAnim(player.race));
             }
         }
 
         if (inventory.equipped.armor) {
             const armor = Objects.getArmor(inventory.equipped.armor.id);
             if (armor) {
-                player.char.bodyAnim = armor.getAnim();
+                player.char.setBody(armor.getAnim());
                 player.flags.naked = false;
             }
         }
@@ -40,29 +44,29 @@ export module InventoryMocker {
         if (inventory.equipped.shield) { 
             const shield = Objects.getShield(inventory.equipped.shield.id);
             if (shield) {
-                player.char.shieldAnim = shield.getAnim();
+                player.char.setShield(shield.getAnim());
             }
         }
 
         if (inventory.equipped.helmet) {
             const helmet = Objects.getHelmet(inventory.equipped.helmet.id);
             if (helmet) {
-                player.char.helmetAnim = helmet.getAnim();
+                player.char.setHelmet(helmet.getAnim());
             }
         }
     }
 
-    function addFood(inventory: Inventory) {
+    private addFood(inventory: Inventory) {
         /* ' Manzanas*/
-        addItem(inventory, 1);
+        this.addItem(inventory, 1);
         /* ' Agua */
-        addItem(inventory, 43);
+        this.addItem(inventory, 43);
     }
 
-    function addHelmet(inventory: Inventory, playerClass: Class) {
+    private addHelmet(inventory: Inventory, classType: ClassType) {
         let helmetId: number | null = null;
 
-        switch (playerClass.type) {
+        switch (classType) {
             case ClassType.Wizard:
                 helmetId = 662; // sombrero de mago
                 break;
@@ -82,7 +86,7 @@ export module InventoryMocker {
         }
 
         if (helmetId) {
-            const slotId = addItem(inventory, helmetId);
+            const slotId = this.addItem(inventory, helmetId);
             const helmet = inventory.getItem(slotId);
             if (helmet) {
                 helmet.equipped = true;
@@ -91,10 +95,10 @@ export module InventoryMocker {
         }
     }
 
-    function addShield(inventory: Inventory, playerClass: Class) {
+    private addShield(inventory: Inventory, classType: ClassType) {
         let shieldId: number | null = null;
     
-        switch (playerClass.type) {
+        switch (classType) {
             case ClassType.Paladin:
             case ClassType.Warrior:
                 shieldId = 130; // escudo de plata
@@ -111,7 +115,7 @@ export module InventoryMocker {
         }
     
         if (shieldId) {
-            const slotId = addItem(inventory, shieldId);
+            const slotId = this.addItem(inventory, shieldId);
             const shield: Item | null = inventory.getItem(slotId);
             if (shield) {
                 shield.equipped = true;
@@ -120,11 +124,11 @@ export module InventoryMocker {
         }
     }
 
-    function addArmor(inventory: Inventory, playerClass: Class, isTall: boolean) {
+    private addArmor(inventory: Inventory, classType: ClassType, isTall: boolean) {
 
         let armorId: number = 0;
     
-        switch (playerClass.type) {
+        switch (classType) {
             case ClassType.Wizard: {
                 armorId = isTall ? 614 : 932;
                 break;
@@ -146,7 +150,7 @@ export module InventoryMocker {
                 break;
         }
     
-        const slotId = addItem(inventory, armorId);
+        const slotId = this.addItem(inventory, armorId);
     
         /* ' Equipo ropa */
         const armor = inventory.getItem(slotId);
@@ -156,11 +160,11 @@ export module InventoryMocker {
         }
     }
 
-    function addWeapons(inventory: Inventory, playerClass: Class) {
+    private addWeapons(inventory: Inventory, classType: ClassType) {
         
         let weaponId;
 
-        switch (playerClass.type) {
+        switch (classType) {
             case ClassType.Wizard:
                 weaponId = 660; // engarzado
                 break;
@@ -185,7 +189,7 @@ export module InventoryMocker {
                 break;
         }
 
-        const weaponSlot = addItem(inventory, weaponId);
+        const weaponSlot = this.addItem(inventory, weaponId);
         
         /* Equipar arma */
         const weapon: Item | null = inventory.getItem(weaponSlot);
@@ -194,37 +198,37 @@ export module InventoryMocker {
             inventory.equipped.weapon = new Equipped(weaponSlot, weaponId);
         }
 
-        switch (playerClass.type) {
+        switch (classType) {
             case ClassType.Hunter:
-                const hArrowsSlot = addItem(inventory, 553); // Flechas
+                const hArrowsSlot = this.addItem(inventory, 553); // Flechas
                 const heavyArrows = inventory.getItem(hArrowsSlot);
                 if (heavyArrows) {
                     heavyArrows.equipped = true;
                     inventory.equipped.ammo = new Equipped(hArrowsSlot, 553);
                 }
-                addItem(inventory, 126); // Hacha larga de guerra 
+                this.addItem(inventory, 126); // Hacha larga de guerra 
                 break;
             case ClassType.Warrior:
-                const lArrowsSlot = addItem(inventory, 480); // Flechas
+                const lArrowsSlot = this.addItem(inventory, 480); // Flechas
                 const lightArrows = inventory.getItem(lArrowsSlot);
                 if (lightArrows) {
                     lightArrows.equipped = true;
                     inventory.equipped.ammo = new Equipped(lArrowsSlot, 480);
                 }
-                addItem(inventory, 664); // Arco compuesto
-                addItem(inventory, 365); // Daga+2
+                this.addItem(inventory, 664); // Arco compuesto
+                this.addItem(inventory, 365); // Daga+2
                 break;
             case ClassType.Bard:
-                const laudSlot = addItem(inventory, 1049); //laud magico
+                const laudSlot = this.addItem(inventory, 1049); //laud magico
                 const laud = inventory.getItem(laudSlot);
                 if (laud) {
                     laud.equipped = true;
                     inventory.equipped.ring = new Equipped(laudSlot, 1049);
                 }
-                addItem(inventory, 366); // daga +3
+                this.addItem(inventory, 366); // daga +3
                 break;
             case ClassType.Druid:
-                const fluteSlot = addItem(inventory, 1050); //flauta elfica
+                const fluteSlot = this.addItem(inventory, 1050); //flauta elfica
                 const elficFlute = inventory.getItem(fluteSlot);
                 if (elficFlute) {
                     elficFlute.equipped = true;
@@ -234,14 +238,14 @@ export module InventoryMocker {
         }
     }
 
-    function addPotions(inventory: Inventory) {
-        addItem(inventory, 38); // Rojas
-        addItem(inventory, 37); // Azules
-        addItem(inventory, 39); // Verdes
-        addItem(inventory, 36); // Amarillas
+    private addPotions(inventory: Inventory) {
+        this.addItem(inventory, 38); // Rojas
+        this.addItem(inventory, 37); // Azules
+        this.addItem(inventory, 39); // Verdes
+        this.addItem(inventory, 36); // Amarillas
     }
 
-    function addItem(inventory: Inventory, itemId: number): number | null {
+    private addItem(inventory: Inventory, itemId: number): number | null {
         return inventory.addItemAndGetSlot(new Item(itemId, 1));
     }
 }

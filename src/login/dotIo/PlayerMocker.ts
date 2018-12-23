@@ -8,45 +8,140 @@ import { Body } from "../../player/char/Body";
 import { Attributes } from "../../player/Attributes";
 import { LoginNewCharDTO } from "../../protocol/receive/packets/LoginNewCharDTO";
 import { Level } from "../../game/Level";
-import { Race } from "../../player/char/Race";
+import { Race, RaceType } from "../../player/char/Race";
+import { Stats } from "../../player/stats/Stats";
+import { Mana } from "../../player/stats/Mana";
+import { MaxMin } from "../../player/stats/MaxMin";
+import { Stamina } from "../../player/stats/Stamina";
+import { Hp } from "../../player/stats/Hp";
+import { Hit } from "../../player/stats/Hit";
+import { SkillPoints } from "../../player/stats/SkillPoints";
+import { Elu } from "../../player/stats/Elu";
+import { Spells } from "../../player/stats/Spells";
+import { Char } from "../../player/char/Char";
+import { Position } from "../../player/Position";
+import { Inventory } from "../../player/inventory/Inventory";
+import { Exp } from "../../player/stats/Exp";
 
-export module PlayerMocker {
+export class PlayerMocker {
 
-    export function mock(newCharDef: LoginNewCharDTO, clientIndex: number): Player {
+    private inventoryMocker: InventoryMocker = new InventoryMocker();
+
+    public mock(newCharDef: LoginNewCharDTO, clientIndex: number): Player {
 
         const race: Race = new Race(newCharDef.race); 
         const playerClass: Class = new Class(newCharDef.class);
+        const stats: Stats = this.mockStats(race.type, playerClass.type);
+        const char: Char = this.mockChar(newCharDef);
+        const position: Position = this.mockPosition();
+        const inventory: Inventory = this.inventoryMocker
+                                            .mockInventory(playerClass.type, race);
 
-        const player: Player = new Player(newCharDef.username, playerClass,
-                                          race, newCharDef.gender,
-                                          newCharDef.mail, clientIndex);
+        const player: Player = new Player(newCharDef.username, newCharDef.mail,
+                                          playerClass, race, newCharDef.gender,
+                                          stats, char, position, inventory, clientIndex);
 
-        mockIni(player, newCharDef);
-        mockFlags(player);
-        mockStats(player);
-        InventoryMocker.mock(player);
-        mockSpells(player);
-        mockPosition(player);
-        mockLevel(player);
+        this.inventoryMocker.equipPlayer(player);
+
+        this.mockFlags(player);
+        this.mockLevel(player);
 
         return player;
     }
 
-    function mockLevel(player: Player) {
-        const level:Level = new Level();
-
-        player.stats.exp = 47980556;
-        
-        level.verifyLevel(player, false);
-        
-        player.stats.minMan = player.stats.maxMan;
-        player.stats.minSta = player.stats.maxSta;
+    private mockAttributes(raceType: RaceType): Attributes {
+        // (force dices in 18)
+        const attributes: Attributes = new Attributes();
+        const raceModifier: RaceModifier = Balance.getRaceModifier(raceType);
+        attributes.strength = 18 + raceModifier.strength;
+        attributes.agility = 18 + raceModifier.agility;
+        attributes.intelligence = 18 + raceModifier.intelligence;
+        attributes.charisma = 18 + raceModifier.charisma;
+        attributes.constitution = 18 + raceModifier.constitution;
+        return attributes;
     }
 
-    function mockPosition(player: Player): void {
+    private mockMana(classType: ClassType, attributes: Attributes): Mana {
+        let mana = 0;
+        switch (classType) {
+            case (ClassType.Wizard):
+                mana = attributes.intelligence * 3;
+                break;
+            case (ClassType.Cleric):
+            case (ClassType.Druid):
+            case (ClassType.Bard):
+            case (ClassType.Assassin):
+                mana = 50;
+                mana = 50;
+            default:
+                mana = 0;
+                mana = 0;
+        }
+        return new Mana(new MaxMin(mana, mana));
+    }
+
+    private mockStamina(attributes: Attributes): Stamina {
+        const stamina = 20 * ((Math.random() * (attributes.agility / 6)) + 2);
+        return new Stamina(new MaxMin(stamina, stamina));
+    }
+
+    private mockHp(attributes: Attributes): Hp {
+        const hp = 15 + ((Math.random() * (attributes.constitution / 3)) + 1);
+        return new Hp(new MaxMin(hp, hp));
+    }
+
+    private mockHit(): Hit {
+        return new Hit(new MaxMin(1, 2));
+    }
+
+    private mockSkills() {
+        const NUMSKILLS = 20;
+        const allSkills = {
+            skills: new Array(),
+            eluSkills: new Array(),
+            expSkills: new Array()
+        };
+        for (let i = 1; i <= NUMSKILLS; i++) {
+            allSkills.skills[i] = 100;
+            allSkills.eluSkills[i] = 0;
+            allSkills.expSkills[i] = 0;
+        }
+        return allSkills;
+    }
+
+    private mockStats(raceType: RaceType, classType: ClassType): Stats {
+        const exp = new Exp(47980556);
+        const attributes = this.mockAttributes(raceType);
+        const mana = this.mockMana(classType, attributes);
+        const stamina = this.mockStamina(attributes);
+        const hp = this.mockHp(attributes);
+        const hit = this.mockHit();
+        const hunger = new MaxMin(100, 100);
+        const thirst = new MaxMin(100, 100);
+        const skillPoints = new SkillPoints(0);
+        const gold = 0;
+        const elu = new Elu(300);
+        const level = 1;
+        const playerKillCount = 0;
+        const allSkills = this.mockSkills();
+        const spells = this.mockSpells(classType);
+
+        return new Stats(exp, mana, stamina, hp, hit, attributes, hunger, thirst,
+                         skillPoints, gold, elu, level, playerKillCount, allSkills.skills,
+                         allSkills.expSkills, allSkills.eluSkills, spells);
+    }
+
+    private mockLevel(player: Player) {
+        const level:Level = new Level();
+        
+        level.verifyLevel(player, false);
+    }
+
+    private mockPosition(): Position {
         const MAP = 272;
         const x = (Math.random() * 82) + 72;
         const entrada = Math.random() * 2;
+        const position = new Position();
 
         let y;
         if (entrada == 0) {
@@ -59,111 +154,49 @@ export module PlayerMocker {
             y = (Math.random() * 28) + 24;
         }
 
-        player.position.map = MAP;
-        player.position.x = x;
-        player.position.y = y;
+        position.map = MAP;
+        position.x = x;
+        position.y = y;
+
+        return position;
     }
 
-    function mockSpells(player: Player): void {
-        const playerClass = player.class.type;
+    private mockSpells(playerClass: ClassType): Spells {
+        const spells: Spells = new Spells();
 
-        if ((playerClass == ClassType.Warrior) || (playerClass == ClassType.Hunter)) return;
+        if ((playerClass == ClassType.Warrior) || (playerClass == ClassType.Hunter)) 
+            return spells;
         
-        player.stats.spells.add(10); // remover paralisis
-        player.stats.spells.add(24); // inmovilizar
+        spells.add(10); // remover paralisis
+        spells.add(24); // inmovilizar
 
         if ((playerClass == ClassType.Cleric) || (playerClass == ClassType.Wizard) || 
             (playerClass == ClassType.Bard) || (playerClass == ClassType.Druid)) {
-            player.stats.spells.add(25); // apocalipsis
+            spells.add(25); // apocalipsis
         }
 
-        player.stats.spells.add(23); // descargar electrica
-        player.stats.spells.add(15); // tormenta
-        player.stats.spells.add(8); // misil magico
-        //player.stats.spells.add(14); // invisibilidad
-        player.stats.spells.add(5); // curar heridas graves
-        player.stats.spells.add(18); // celeridad
-        player.stats.spells.add(20); // fuerza
+        spells.add(23); // descargar electrica
+        spells.add(15); // tormenta
+        spells.add(8); // misil magico
+        //spells.add(14); // invisibilidad
+        spells.add(5); // curar heridas graves
+        spells.add(18); // celeridad
+        spells.add(20); // fuerza
+
+        return spells;
     }
 
-    function mockIni(player: Player, definition: LoginNewCharDTO): void {
-        player.char.heading = Heading.South;
-        player.char.bodyAnim = Body[Body[definition.race]]; // OK?
-        player.char.head = definition.head;
+    private mockChar(definition: LoginNewCharDTO): Char {
+        const body = Body[Body[definition.race]]; // TODO: OK?
+        return new Char(definition.head, body , Heading.South);
     }
 
-    function mockFlags(player: Player): void {
+    private mockFlags(player: Player): void {
         player.flags.death = false;
         player.flags.hidden = false;
         player.flags.hunger = 0;
         player.flags.thirst = 0;
         player.flags.naked = false;
         player.flags.paralized = false;
-    }
-
-    function mockStats(player: Player): void {
-        // Mock attributes (force dices in 18)
-        const attributes: Attributes = new Attributes();
-        const raceModifier: RaceModifier = Balance.getRaceModifier(player.race);
-        attributes.strength = 18 + raceModifier.strength;
-        attributes.agility = 18 + raceModifier.agility;
-        attributes.intelligence = 18 + raceModifier.intelligence;
-        attributes.charisma = 18 + raceModifier.charisma;
-        attributes.constitution = 18 + raceModifier.constitution;
-        player.stats.attributes = attributes;
-    
-        // TODO: Al cambiar la estructura de skills, eluskills y expskills ver de volar
-        // el numskills de abajo y cambiar la forma en la que se mockea esto
-        const NUMSKILLS = 20;
-        for (let i = 1; i <= NUMSKILLS; i++) {
-            player.stats.skills[i] = 100;
-            player.stats.eluSkills[i] = 0;
-            player.stats.expSkills[i] = 0;
-        }
-
-        player.stats.skillPts = 0;
-        
-        const hpRandom = (Math.random() * (player.stats.attributes.constitution / 3)) + 1;
-        player.stats.maxHp = 15 + hpRandom;
-        player.stats.minHp = 15 + hpRandom;
-    
-        const staRandom = (Math.random() * (player.stats.attributes.agility / 6)) + 2;
-        player.stats.maxSta = 20 * staRandom;
-        player.stats.minSta = 20 * staRandom;
-    
-        player.stats.maxWat = 100;
-        player.stats.minWat = 100;
-
-        player.stats.maxHun = 100;
-        player.stats.minHun = 100;
-
-        switch (player.class.type) {
-
-            case (ClassType.Wizard):
-                const mana = player.stats.attributes.intelligence * 3;
-                player.stats.maxMan = mana;
-                player.stats.minMan = mana;
-                break;
-
-            case (ClassType.Cleric):
-            case (ClassType.Druid):
-            case (ClassType.Bard):
-            case (ClassType.Assassin):
-            // case (ClassType.Bandit): TODO: No se usa?
-                player.stats.maxMan = 50;
-                player.stats.minMan = 50;
-
-            default:
-                player.stats.maxMan = 0;
-                player.stats.minMan = 0;
-        }
-    
-        player.stats.maxHit = 2;
-        player.stats.minHit = 1;
-        player.stats.gold = 0;
-        player.stats.exp = 0;
-        player.stats.elu = 300;
-        player.stats.level = 1;
-        player.stats.playerKillCount = 0;
     }
 }

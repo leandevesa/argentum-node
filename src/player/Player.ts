@@ -9,27 +9,23 @@ import { Position } from "./Position";
 
 export class Player {
 
-    private _name: string;
-    private _class: Class;
-    private _race: Race;
-    private _gender: Gender;
-    private _mail: string; 
     private _flags: Flags = new Flags();
-    private _char: Char = new Char();
-    private _stats: Stats = new Stats();
-    private _inventory: Inventory = new Inventory();
-    private _position: Position = new Position();
-    private _clientIndex: number;
 
-    constructor(name: string, playerClass: Class, race: Race, gender: Gender,
-                mail: string, clientIndex: number) {
+    constructor(private _name: string, 
+                private _mail: string,
+                private _class: Class,
+                private _race: Race, 
+                private _gender: Gender,
+                private _stats: Stats,
+                private _char: Char,
+                private _position: Position,
+                private _inventory: Inventory,
+                private _clientIndex: number) {
+                    
+    }
 
-        this._name = name;
-        this._class = playerClass;
-        this._race = race;
-        this._gender = gender;
-        this._mail = mail;
-        this._clientIndex = clientIndex;
+    public levelUp() {
+        this._stats.levelUp(this.class.type);
     }
 
 	public get position(): Position {
@@ -43,10 +39,6 @@ export class Player {
 	public get stats(): Stats {
 		return this._stats;
     }
-    
-	public get char(): Char {
-		return this._char;
-	}
 
     public get mail(): string {
         return this._mail;
@@ -70,6 +62,10 @@ export class Player {
     
     public get flags(): Flags {
         return this._flags;
+    }
+    
+    public get char(): Char {
+        return this._char;
     }
     
 	public get clientIndex(): number {

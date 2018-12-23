@@ -1,6 +1,6 @@
 import { RaceModifier } from "./RaceModifier";
-import { Race } from "../../player/char/Race";
-import { Class } from "../../player/char/Class";
+import { RaceType } from "../../player/char/Race";
+import { ClassType } from "../../player/char/Class";
 import { HPDistribution } from "./HPDistribution";
 
 export module Balance {
@@ -15,12 +15,12 @@ export module Balance {
         loaded = true;
     }
 
-    export function getRaceModifier(race: Race): RaceModifier {
-        return raceModifiers[race.type];
+    export function getRaceModifier(raceType: RaceType): RaceModifier {
+        return raceModifiers[raceType];
     }
 
-    export function getHPModifier(playerClass: Class): number {
-        return hpModifier[playerClass.type];
+    export function getHPModifier(classType: ClassType): number {
+        return hpModifier[classType];
     }
 
     export function getHPDistribution(): HPDistribution {

@@ -2,7 +2,7 @@ export class Spells {
 
     private readonly MAX_SPELLS = 35;
     
-    private _spells: Array<number> = new Array(this.MAX_SPELLS);;
+    private _spells: Array<number> = new Array(this.MAX_SPELLS);
     private _spellQuantity = 0;
     
     public add(spellId: number) {
