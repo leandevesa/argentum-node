@@ -1,0 +1,23 @@
+export enum FontType {
+	Talk,
+	Fight,
+	Warning,
+	Info,
+	Infobold,
+	Execution,
+	Party,
+	Poison,
+	Guild,
+	Server,
+	Guildmsg,
+	Counselor,
+	ChaosCounselor,
+	VesaCounselor,
+	ChaosVesaCounselor,
+	Sentinel,
+	Gmmsg,
+	Gm,
+	Citizen,
+	Conse,
+	God
+}

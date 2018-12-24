@@ -3,14 +3,12 @@ export class Serializer {
     private _byteArray: Array<number> = new Array();
 
     public string(value: String): Serializer {
-        this._byteArray
-            .concat(value
-                    .split('')
-                    .map(
-                        function (chr) {
-                            return chr.charCodeAt(0);
-                        })
-                    );
+
+        // First 2b -> string size
+        this.integer(value.length);
+        // then -> string as binary
+        const stringBytes = value.split('').map((chr) => chr.charCodeAt(0));
+        this._byteArray = this._byteArray.concat(stringBytes);
 
        return this;
     }
@@ -32,6 +30,14 @@ export class Serializer {
     public integer(value: number): Serializer {
         this._byteArray.push(value & 0xff);
         this._byteArray.push((value >> 8) & 0xff);
+        return this;
+    }
+
+    public long(value: number): Serializer {
+        this._byteArray.push(value & 0xff);
+        this._byteArray.push((value >> 8) & 0xff);
+        this._byteArray.push((value >> 16) & 0xff);
+        this._byteArray.push((value >> 24) & 0xff);
         return this;
     }
 

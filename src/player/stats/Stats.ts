@@ -68,4 +68,24 @@ export class Stats {
 	public get level(): number {
 		return this._level;
 	}
+
+	public get hp(): Hp {
+		return this._hp;
+	}
+
+	public get stamina(): Stamina {
+		return this._stamina;
+	}
+
+	public get mana(): Mana {
+		return this._mana;
+	}
+
+	public get hit(): Hit {
+		return this._hit;
+	}
+
+	public get gold(): number {
+		return this._gold;
+	}
 }

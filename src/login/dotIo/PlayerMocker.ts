@@ -36,7 +36,7 @@ export class PlayerMocker {
         const char: Char = this.mockChar(newCharDef);
         const position: Position = this.mockPosition();
         const inventory: Inventory = this.inventoryMocker
-                                            .mockInventory(playerClass.type, race);
+                                          .mockInventory(playerClass.type, race);
 
         const player: Player = new Player(newCharDef.username, newCharDef.mail,
                                           playerClass, race, newCharDef.gender,

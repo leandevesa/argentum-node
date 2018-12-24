@@ -1,8 +1,16 @@
 import { Player } from "../player/Player";
 import { DataSender } from "../protocol/send/DataSender";
-import { PlayWavBuilder } from "../protocol/send/packets/PlayWav";
 import { WavId } from "../protocol/send/enums/WavId";
 import { Senders } from "../protocol/send/senders/Senders";
+import { DataBufferer } from "../protocol/send/DataBufferer";
+import { SendPackets } from "../protocol/send/packets/SendPackets";
+
+interface SmallStats {
+    hp: number;
+    stamina: number;
+    mana: number;
+    hit: number;
+}
 
 export class LevelVerifier {
 
@@ -10,6 +18,7 @@ export class LevelVerifier {
     private readonly MAX_LEVEL = 255; // TODO: Max level 255???
 
     private dataSender: DataSender = new DataSender();
+    private dataBufferer: DataBufferer = new DataBufferer();
 
     public verify(player: Player, notifyUser: boolean) {
         
@@ -20,34 +29,43 @@ export class LevelVerifier {
 
             if (this.isOnMaxLevel(player)) return;
 
-            // Statistics.userLevelUp(player);
-
+            const previousStats = this.getStats(player);
             player.levelUp();
+            const postStats = this.getStats(player);
 
-            this.notifyLevelUp(player, notifyUser);
+            if (notifyUser) this.notifyLevelUp(player, previousStats, postStats);
         }
 
         this.verifyIfNotNewbieAnymore(wasNewbie, player);
         this.verifyGainedSkillPoints(previousSkillPoints, player);
 
-        // TODO: When writeconsolemsg
-        // WriteUpdateUserStats(UserIndex);
+        this.dataBufferer.buffer(player, SendPackets.updateUserStats(player));
+    }
+
+    private getStats(player: Player): SmallStats {
+        const hp = player.stats.hp.max;
+        const stamina = player.stats.stamina.max;
+        const mana = player.stats.mana.max;
+        const hit = player.stats.hit.max;
+
+        return {
+            "hp": hp,
+            "stamina": stamina,
+            "mana": mana,
+            "hit": hit
+        }
     }
 
     private verifyGainedSkillPoints(previousSkillPoints: number, player: Player) {
         const gainedPoints: number = player.stats.skillPoints - previousSkillPoints;
-
-        // TODO: When writeconsolemsg
-
-/*         WriteLevelUp(UserIndex, Pts);
-
-		WriteConsoleMsg(UserIndex, "Has ganado un total de " + vb6::CStr(Pts) + " skillpoints.",
-				FontTypeNames_FONTTYPE_INFO); */
+        const msg: string = `Has ganado un total de ${gainedPoints} skillpoints.`
+        
+        this.dataBufferer.buffer(player, SendPackets.levelUp(gainedPoints));
+        this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
     }
 
     private verifyIfNotNewbieAnymore(wasNewbie: boolean, player: Player) {
         if (!this.isNewbie(player) && wasNewbie) {
-            // TODO
 /*             QuitarNewbieObj(UserIndex);
             if (MapInfo[UserList[UserIndex].Pos.Map].Restringir == eRestrict_restrict_newbie) {
                 WarpUserChar(UserIndex, 1, 50, 50, true);
@@ -56,41 +74,36 @@ export class LevelVerifier {
         }
     }
 
-    private notifyLevelUp(player: Player, notifyUser: boolean) {
-        if (notifyUser) {
+    private notifyLevelUp(player: Player, previousStats: SmallStats,
+                          postStats: SmallStats) {
 
-            // TODO: Write console msg!!
+        this.dataSender.send(Senders.toPcArea(), player, 
+                             SendPackets.playWav(WavId.levelUp, player.position));
 
-            this.dataSender.send(Senders.toPcArea(),
-                                 player, 
-                                 PlayWavBuilder.build(WavId.levelUp, player.position));
+        this.dataBufferer.buffer(player, SendPackets.consoleMsg("¡Has subido de nivel!"));
 
-            // TODO: WriteConsoleMsg(UserIndex, "¡Has subido de nivel!", FontTypeNames_FONTTYPE_INFO);
+        const hpIncrease = postStats.hp - previousStats.hp;
+        if (hpIncrease > 0) {
+            const msg = `Has ganado ${hpIncrease} puntos de vida.`;
+            this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
+        }
 
-            /* 
-            if (AumentoHP > 0) {
-                WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoHP) + " puntos de vida.",
-                                FontTypeNames_FONTTYPE_INFO);
-            }
-            if (AumentoSTA > 0) {
-                WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoSTA) + " puntos de energía.",
-                                FontTypeNames_FONTTYPE_INFO);
-            }
-            if (AumentoMANA > 0) {
-                WriteConsoleMsg(UserIndex, "Has ganado " + vb6::CStr(AumentoMANA) + " puntos de maná.",
-                                FontTypeNames_FONTTYPE_INFO);
-            }
-            if (AumentoHIT > 0) {
-                WriteConsoleMsg(UserIndex, "Tu golpe máximo aumentó en " + vb6::CStr(AumentoHIT) + " puntos.",
-                                FontTypeNames_FONTTYPE_INFO);
-                WriteConsoleMsg(UserIndex, "Tu golpe mínimo aumentó en " + vb6::CStr(AumentoHIT) + " puntos.",
-                                FontTypeNames_FONTTYPE_INFO);
-            }
+        const staIncrease = postStats.stamina - previousStats.stamina;
+        if (staIncrease > 0) {
+            const msg = `Has ganado ${staIncrease} puntos de energia.`;
+            this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
+        }
 
-            LogDesarrollo(
-                    UserList[UserIndex].Name + " paso a nivel " + vb6::CStr(UserList[UserIndex].Stats.ELV) +
-                    " gano HP: "
-                    + vb6::CStr(AumentoHP)); */
+        const manaIncrease = postStats.mana - previousStats.mana;
+        if (manaIncrease > 0) {
+            const msg = `Has ganado ${manaIncrease} puntos de mana.`;
+            this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
+        }
+        
+        const hitIncrease = postStats.hit - previousStats.hit;
+        if (hitIncrease > 0) {
+            const msg = `Tu golpe min/max aumento en ${hitIncrease} puntos.`;
+            this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
         }
     }
 

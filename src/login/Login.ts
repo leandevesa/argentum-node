@@ -9,10 +9,17 @@ export class Login {
 
     public newUser(clientIndex: number, charDefinition: LoginNewCharDTO) {
 
-        // TODO: Check if user exists
-        // TODO: Save new user
+        // Check if user exists
+        // Save new user
 
         const player: Player = this.playerMocker.mock(charDefinition, clientIndex);
         Game.setClientPlayer(clientIndex, player);
+
+        // A partir de aca es el connectuser
+
+        // Resetear flags
+        // Chequear si tiene equipado cosas y si no defaultea a vacio
+
+        
     }
 }

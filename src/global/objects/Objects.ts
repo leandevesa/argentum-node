@@ -29,7 +29,7 @@ export module Objects {
 
     export function getWeapon(objectId: number, userClass: Class): Weapon | null {
         // TODO: Ojo, si no existe tirar excepion y sacar que sea | null
-        return new Weapon(); // TODO
+        return null;//new Weapon(); // TODO
     }
 
     export function getHelmet(objectId: number): Helmet | null {
