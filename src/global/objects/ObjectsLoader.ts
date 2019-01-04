@@ -1,23 +1,27 @@
-import { Food } from "./Food";
-import { ObjectBuilder } from "./ObjectBuilder";
+import { Food } from "./grabbable/Food";
+import { ObjectsBuilder } from "./ObjectsBuilder";
 import { isNullOrUndefined } from "util";
+import { GameObject } from "./GameObject";
+import { Objects } from "./Objects";
 
 export module ObjectsLoader {
 
     const ROOT = 'dat';
-    const objectBuilder = new ObjectBuilder();
+    const objectsBuilder = new ObjectsBuilder();
 
     export function load() {
         const fs = require('fs');
         const data: any = JSON.parse(fs.readFileSync(`${ROOT}/objects.json`, 'utf8'));
-        const objects = new Array();
+        const objects = new Array<GameObject>();
 
         for (let id of Object.keys(data)) {
             const metaObject = data[id];
-            const object = objectBuilder.build(parseInt(id), metaObject);
+            const object = objectsBuilder.build(parseInt(id), metaObject);
             if (!isNullOrUndefined(object)) {
-                objects.push(object);
+                objects[id] = object;
             }
         }
+
+        Objects.setObjects(objects);
     }
 }

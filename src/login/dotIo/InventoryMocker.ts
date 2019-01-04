@@ -1,4 +1,3 @@
-import { Objects } from "../../global/objects/Objects";
 import { Player } from "../../player/Player";
 import { Inventory } from "../../player/inventory/Inventory";
 import { ClassType } from "../../player/char/Class";
@@ -6,6 +5,7 @@ import { Equipped } from "../../player/inventory/Equipped";
 import { Item } from "../../player/inventory/Item";
 import { Race } from "../../player/char/Race";
 import { isNull } from "util";
+import { Objects } from "../../global/objects/Objects";
 
 export class InventoryMocker {
 
@@ -28,31 +28,31 @@ export class InventoryMocker {
         const inventory: Inventory = player.inventory;
 
         if (inventory.equipped.weapon) {
-            const weapon = Objects.getWeapon(inventory.equipped.weapon.id, player.class);
+            const weapon = Objects.getEquippable(inventory.equipped.weapon.id);
             if (weapon) {
                 player.char.setWeapon(weapon.getAnim(player.race));
             }
         }
 
         if (inventory.equipped.armor) {
-            const armor = Objects.getArmor(inventory.equipped.armor.id);
+            const armor = Objects.getEquippable(inventory.equipped.armor.id);
             if (armor) {
-                player.char.setBody(armor.getAnim());
+                player.char.setBody(armor.getNumRompaje());
                 player.flags.naked = false;
             }
         }
 
         if (inventory.equipped.shield) { 
-            const shield = Objects.getShield(inventory.equipped.shield.id);
+            const shield = Objects.getEquippable(inventory.equipped.shield.id);
             if (shield) {
-                player.char.setShield(shield.getAnim());
+                player.char.setShield(shield.getAnim(player.race));
             }
         }
 
         if (inventory.equipped.helmet) {
-            const helmet = Objects.getHelmet(inventory.equipped.helmet.id);
+            const helmet = Objects.getEquippable(inventory.equipped.helmet.id);
             if (helmet) {
-                player.char.setHelmet(helmet.getAnim());
+                player.char.setHelmet(helmet.getAnim(player.race));
             }
         }
     }

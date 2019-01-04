@@ -2555,7 +2555,7 @@
         "type": 3,
         "numRopaje": 52,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 0,
         "minDef": 0,
         "price": 40,
@@ -2591,7 +2591,7 @@
         "type": 3,
         "numRopaje": 54,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 40,
         "minDef": 35,
         "price": 27440,
@@ -4190,7 +4190,7 @@
         "type": 3,
         "numRopaje": 81,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaenana": 1,
         "caos": 1,
         "maxDef": 13,
         "minDef": 7,
@@ -4370,7 +4370,7 @@
         "type": 3,
         "numRopaje": 192,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 45,
         "minDef": 40,
         "price": 35350,
@@ -4396,7 +4396,7 @@
         "type": 3,
         "numRopaje": 191,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 50,
         "minDef": 45,
         "price": 47600,
@@ -5259,7 +5259,7 @@
         "minDef": 0,
         "maxDef": 0,
         "crucial": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "newbie": 1
     },
     "467": {
@@ -5497,7 +5497,7 @@
         "type": 3,
         "numRopaje": 91,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 65,
         "minDef": 60,
         "price": 540000,
@@ -5570,7 +5570,7 @@
         "type": 3,
         "numRopaje": 95,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 1,
         "minDef": 1,
         "price": 120,
@@ -5679,7 +5679,7 @@
         "numRopaje": 102,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 13,
         "minDef": 7,
         "price": 3010,
@@ -5850,7 +5850,7 @@
         "type": 3,
         "numRopaje": 110,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 45,
         "minDef": 40,
         "price": 59000,
@@ -5891,7 +5891,7 @@
         "type": 3,
         "numRopaje": 112,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 5,
         "minDef": 3,
         "price": 650,
@@ -5970,7 +5970,7 @@
         "type": 3,
         "numRopaje": 117,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 4,
         "minDef": 2,
         "price": 410,
@@ -6051,7 +6051,7 @@
         "numRopaje": 123,
         "grabbable": 0,
         "mujer": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 10,
         "minDef": 6,
         "price": 3075,
@@ -6281,7 +6281,7 @@
         "type": 3,
         "numRopaje": 135,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 20,
         "minDef": 15,
         "price": 10500,
@@ -6293,7 +6293,7 @@
         "type": 3,
         "numRopaje": 136,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 35,
         "minDef": 30,
         "price": 20000,
@@ -6308,7 +6308,7 @@
         "type": 3,
         "numRopaje": 137,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "maxDef": 35,
         "minDef": 30,
@@ -6324,7 +6324,7 @@
         "type": 3,
         "numRopaje": 138,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "maxDef": 4,
         "minDef": 2,
@@ -6546,7 +6546,7 @@
         "numRopaje": 133,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 12,
         "minDef": 5,
         "price": 2800,
@@ -6694,7 +6694,7 @@
         "numRopaje": 23,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 12,
         "minDef": 5,
         "price": 2800,
@@ -7310,7 +7310,7 @@
         "type": 3,
         "numRopaje": 135,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 40,
         "minDef": 38,
         "price": 0,
@@ -7360,7 +7360,7 @@
         "type": 3,
         "numRopaje": 91,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 65,
         "minDef": 60,
         "price": 60000,
@@ -7579,7 +7579,7 @@
         "numRopaje": 110,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 55,
         "minDef": 55,
         "price": 0,
@@ -7600,7 +7600,7 @@
         "numRopaje": 136,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 35,
         "minDef": 35,
         "price": 0,
@@ -7676,7 +7676,7 @@
         "numRopaje": 135,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 35,
         "minDef": 35,
         "price": 0,
@@ -7744,7 +7744,7 @@
         "numRopaje": 91,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 55,
         "minDef": 55,
         "price": 0,
@@ -7852,7 +7852,7 @@
         "type": 3,
         "numRopaje": 155,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 20,
         "minDef": 10,
         "price": 17000,
@@ -7930,7 +7930,7 @@
         "price": 0,
         "crucial": 0,
         "nosecae": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "657": {
         "name": "Desaturdir",
@@ -8172,7 +8172,7 @@
         "type": 3,
         "numRopaje": 156,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 22,
         "minDef": 12,
         "price": 7350,
@@ -8193,7 +8193,7 @@
         "type": 3,
         "numRopaje": 157,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 17,
         "minDef": 10,
         "price": 4700,
@@ -8231,7 +8231,7 @@
         "type": 3,
         "numRopaje": 159,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 12,
         "minDef": 8,
         "price": 3200,
@@ -8243,7 +8243,7 @@
         "type": 3,
         "numRopaje": 160,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 15,
         "minDef": 6,
         "price": 3400,
@@ -8255,7 +8255,7 @@
         "type": 3,
         "numRopaje": 161,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 35,
         "minDef": 30,
         "price": 21980,
@@ -8304,7 +8304,7 @@
         "numRopaje": 175,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 3,
         "minDef": 1,
         "price": 175,
@@ -8329,7 +8329,7 @@
         "numRopaje": 177,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 3,
         "minDef": 1,
         "price": 175,
@@ -8394,7 +8394,7 @@
         "numRopaje": 179,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaenana": 1,
         "maxDef": 25,
         "minDef": 15,
         "price": 11830,
@@ -8414,7 +8414,7 @@
         "numRopaje": 171,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaenana": 1,
         "maxDef": 20,
         "minDef": 15,
         "price": 9500,
@@ -8489,7 +8489,7 @@
         "numRopaje": 168,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 25,
         "minDef": 15,
         "price": 11830,
@@ -8509,7 +8509,7 @@
         "numRopaje": 167,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 20,
         "minDef": 15,
         "price": 9500,
@@ -8550,7 +8550,7 @@
         "numRopaje": 166,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaenana": 1,
         "maxDef": 35,
         "minDef": 30,
         "price": 18000,
@@ -8581,7 +8581,7 @@
         "numRopaje": 165,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 35,
         "minDef": 30,
         "price": 18000,
@@ -8656,7 +8656,7 @@
         "numRopaje": 164,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaenana": 1,
         "maxDef": 40,
         "minDef": 35,
         "price": 25060,
@@ -8683,7 +8683,7 @@
         "numRopaje": 163,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 40,
         "minDef": 35,
         "price": 25060,
@@ -8878,7 +8878,7 @@
         "type": 3,
         "numRopaje": 180,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaenana": 1,
         "maxDef": 5,
         "minDef": 3,
         "price": 700,
@@ -9872,7 +9872,7 @@
         "grhIndex": 22039,
         "type": 3,
         "numRopaje": 539,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "grabbable": 0,
         "maxDef": 37,
         "minDef": 30,
@@ -10100,7 +10100,7 @@
         "type": 3,
         "numRopaje": 34,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 0,
         "minDef": 0,
         "price": 40,
@@ -10214,7 +10214,7 @@
         "maxDef": 20,
         "price": 10500,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "878": {
         "_comment": "enano mujer",
@@ -10227,7 +10227,7 @@
         "maxDef": 20,
         "price": 10500,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1
     },
     "879": {
@@ -10857,7 +10857,7 @@
         "maxDef": 0,
         "minDef": 0,
         "price": 675000,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "crucial": 0
     },
     "908": {
@@ -10871,7 +10871,7 @@
         "maxDef": 1,
         "price": 100,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Pirat",
@@ -10897,7 +10897,7 @@
         "maxDef": 12,
         "price": 3400,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1
     },
     "910": {
@@ -10911,7 +10911,7 @@
         "maxDef": 1,
         "price": 110,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "911": {
         "_comment": "gnomo",
@@ -10924,7 +10924,7 @@
         "maxDef": 1,
         "price": 110,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "912": {
         "_comment": "gnomo",
@@ -10937,7 +10937,7 @@
         "maxDef": 1,
         "price": 110,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "913": {
         "_comment": "gnomo",
@@ -10950,7 +10950,7 @@
         "maxDef": 2,
         "price": 150,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "914": {
         "_comment": "gnomo mujer",
@@ -10964,7 +10964,7 @@
         "price": 150,
         "crucial": 1,
         "mujer": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "915": {
         "_comment": "gnomo",
@@ -10977,7 +10977,7 @@
         "maxDef": 2,
         "price": 150,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "916": {
         "_comment": "gnomo",
@@ -10990,7 +10990,7 @@
         "maxDef": 3,
         "price": 200,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "917": {
         "_comment": "gnomo",
@@ -11003,7 +11003,7 @@
         "maxDef": 3,
         "price": 200,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Pirat",
@@ -11029,7 +11029,7 @@
         "maxDef": 2,
         "price": 200,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -11047,7 +11047,7 @@
         "maxDef": 2,
         "price": 200,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Druid",
@@ -11065,7 +11065,7 @@
         "maxDef": 3,
         "price": 275,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Pirat",
@@ -11091,7 +11091,7 @@
         "maxDef": 5,
         "price": 450,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "922": {
         "_comment": "gnomo",
@@ -11104,7 +11104,7 @@
         "maxDef": 5,
         "price": 600,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Thief",
@@ -11130,7 +11130,7 @@
         "maxDef": 5,
         "price": 700,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "924": {
         "_comment": "gnomo",
@@ -11143,7 +11143,7 @@
         "maxDef": 6,
         "price": 900,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -11161,7 +11161,7 @@
         "maxDef": 8,
         "price": 1190,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "forbiddenClasses": [
             "Wizard",
@@ -11184,7 +11184,7 @@
         "maxDef": 6,
         "price": 1000,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "forbiddenClasses": [
             "Wizard",
@@ -11203,7 +11203,7 @@
         "maxDef": 7,
         "price": 1400,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Pirat",
@@ -11229,7 +11229,7 @@
         "maxDef": 9,
         "price": 2550,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Pirat",
@@ -11255,7 +11255,7 @@
         "maxDef": 15,
         "price": 4600,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -11273,7 +11273,7 @@
         "maxDef": 10,
         "price": 2700,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "931": {
         "_comment": "gnomo mujer",
@@ -11286,7 +11286,7 @@
         "maxDef": 11,
         "price": 3175,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1
     },
     "932": {
@@ -11300,7 +11300,7 @@
         "maxDef": 12,
         "price": 3200,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Warrior",
             "Paladin",
@@ -11322,7 +11322,7 @@
         "maxDef": 13,
         "price": 3710,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "forbiddenClasses": [
             "Wizard",
@@ -11344,7 +11344,7 @@
         "maxDef": 15,
         "price": 4600,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Druid",
@@ -11362,7 +11362,7 @@
         "maxDef": 17,
         "price": 6020,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "forbiddenClasses": [
             "Wizard",
@@ -11386,7 +11386,7 @@
         "maxDef": 20,
         "price": 10500,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1
     },
     "937": {
@@ -11400,7 +11400,7 @@
         "maxDef": 22,
         "price": 7350,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -11424,7 +11424,7 @@
         "price": 10500,
         "crucial": 1,
         "mujer": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Warrior"
         ]
@@ -11440,7 +11440,7 @@
         "maxDef": 23,
         "price": 13500,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "940": {
         "_comment": "gnomo",
@@ -11453,7 +11453,7 @@
         "maxDef": 26,
         "price": 15330,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -11476,7 +11476,7 @@
         "maxDef": 30,
         "price": 18000,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "forbiddenClasses": [
             "Wizard",
@@ -11495,7 +11495,7 @@
         "maxDef": 35,
         "price": 22000,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "forbiddenClasses": [
             "Wizard",
@@ -11715,7 +11715,7 @@
         "maxDef": 0,
         "price": 50,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1
     },
     "958": {
@@ -11729,7 +11729,7 @@
         "maxDef": 0,
         "price": 50,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "959": {
         "_comment": "enano",
@@ -11742,7 +11742,7 @@
         "maxDef": 1,
         "price": 100,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Pirat",
@@ -11768,7 +11768,7 @@
         "maxDef": 1,
         "price": 100,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Pirat",
@@ -11794,7 +11794,7 @@
         "maxDef": 2,
         "price": 125,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Pirat",
@@ -11820,7 +11820,7 @@
         "maxDef": 3,
         "price": 200,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "963": {
         "_comment": "enano",
@@ -11833,7 +11833,7 @@
         "maxDef": 3,
         "price": 275,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "hombre": 1
     },
     "964": {
@@ -11847,7 +11847,7 @@
         "maxDef": 4,
         "price": 400,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "965": {
         "_comment": "enano",
@@ -11860,7 +11860,7 @@
         "maxDef": 5,
         "price": 700,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Druid"
         ]
@@ -11876,7 +11876,7 @@
         "maxDef": 16,
         "price": 3200,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Thief",
@@ -11902,7 +11902,7 @@
         "maxDef": 17,
         "price": 3600,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Pirat"
         ]
@@ -11918,7 +11918,7 @@
         "maxDef": 19,
         "price": 4480,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Druid",
@@ -11940,7 +11940,7 @@
         "maxDef": 18,
         "price": 10000,
         "crucial": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "970": {
         "_comment": "enano",
@@ -11953,7 +11953,7 @@
         "maxDef": 22,
         "price": 13350,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -11971,7 +11971,7 @@
         "maxDef": 23,
         "price": 13720,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -11994,7 +11994,7 @@
         "maxDef": 25,
         "price": 15000,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Bard",
             "Druid"
@@ -12011,7 +12011,7 @@
         "maxDef": 22,
         "price": 13350,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "mujer": 1,
         "forbiddenClasses": [
             "Wizard",
@@ -12035,7 +12035,7 @@
         "maxDef": 35,
         "price": 19000,
         "crucial": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -12054,7 +12054,7 @@
         "maxDef": 40,
         "price": 23100,
         "crucial": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -12077,7 +12077,7 @@
         "maxDef": 50,
         "price": 54000,
         "crucial": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Wizard",
             "Bard",
@@ -12331,7 +12331,7 @@
         "price": 50,
         "crucial": 0,
         "mujer": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "994": {
         "name": "Vestimentas Olímpicas (E)",
@@ -12343,7 +12343,7 @@
         "maxDef": 1,
         "price": 50,
         "crucial": 0,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "995": {
         "name": "Vestimentas Olímpicas (H-M)",
@@ -12387,7 +12387,7 @@
         "price": 50,
         "crucial": 0,
         "mujer": 1,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "999": {
         "name": "Vestimentas Olímpicas (G)",
@@ -12399,7 +12399,7 @@
         "maxDef": 1,
         "price": 50,
         "crucial": 0,
-        "isForLittleRaces": 1
+        "razaEnana": 1
     },
     "1000": {
         "name": "Antorcha Olímpica de Mano",
@@ -12864,7 +12864,7 @@
         "price": 2900,
         "crucial": 1,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "forbiddenClasses": [
             "Warrior",
             "Paladin",
@@ -12884,7 +12884,7 @@
         "numRopaje": 545,
         "grabbable": 0,
         "real": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 22,
         "minDef": 15,
         "price": 9240,
@@ -12912,7 +12912,7 @@
         "numRopaje": 548,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 12,
         "minDef": 6,
         "price": 2900,
@@ -12936,7 +12936,7 @@
         "numRopaje": 546,
         "grabbable": 0,
         "caos": 1,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 22,
         "minDef": 15,
         "price": 9240,
@@ -12981,7 +12981,7 @@
         "type": 3,
         "numRopaje": 159,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 0,
         "minDef": 0,
         "price": 40,
@@ -13011,7 +13011,7 @@
         "type": 3,
         "numRopaje": 157,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 1,
         "minDef": 0,
         "price": 60,
@@ -13179,7 +13179,7 @@
         "type": 3,
         "numRopaje": 564,
         "grabbable": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "maxDef": 0,
         "minDef": 0,
         "price": 0,
@@ -13316,7 +13316,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13365,7 +13365,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13414,7 +13414,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13463,7 +13463,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13512,7 +13512,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13561,7 +13561,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13610,7 +13610,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13659,7 +13659,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13708,7 +13708,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13757,7 +13757,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13806,7 +13806,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13855,7 +13855,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13904,7 +13904,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -13953,7 +13953,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14002,7 +14002,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14051,7 +14051,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14100,7 +14100,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14149,7 +14149,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14198,7 +14198,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14247,7 +14247,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14296,7 +14296,7 @@
         "minDef": 15,
         "maxDef": 20,
         "real": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14345,7 +14345,7 @@
         "minDef": 15,
         "maxDef": 20,
         "caos": 2,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "log": 1,
         "forbiddenClasses": [
@@ -14525,7 +14525,7 @@
         "minDef": 1,
         "maxDef": 1,
         "crucial": 0,
-        "isForLittleRaces": 1,
+        "razaEnana": 1,
         "noSeCae": 1,
         "noRobable": 1,
         "noComerciable": 1,

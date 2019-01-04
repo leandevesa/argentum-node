@@ -41,11 +41,7 @@ export class Inventory {
         
         return null;
     }
-
-    /**
-     * Getter equippedSlot
-     * @return {AllEquipped}
-     */
+    
 	public get equipped(): AllEquipped {
 		return this._equipped;
 	}
