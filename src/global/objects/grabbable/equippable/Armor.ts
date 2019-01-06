@@ -5,8 +5,6 @@ import { EquippableObject } from "./EquippableObject";
 import { isNullOrUndefined } from "util";
 
 export class Armor extends EquippableObject {
-
-    private _defense: MaxMin;
     
     constructor(id: number,
                 name: string,
@@ -21,13 +19,7 @@ export class Armor extends EquippableObject {
                 private _isForLittleRaces: boolean | null) {
         
         super(id, name, grhIndex, type, price, crucial, forbiddenClasses, 
-              null, null, numRompaje);
-
-        this._defense = new MaxMin(minDef, maxDef);
-    }
-
-    public get defense(): MaxMin {
-        return this._defense;
+              null, null, numRompaje, new MaxMin(), new MaxMin(maxDef, minDef));
     }
 
     public get isForLittleRaces(): boolean {

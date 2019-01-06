@@ -4,8 +4,6 @@ import { ClassType } from "../../../../player/char/Class";
 import { EquippableObject } from "./EquippableObject";
 
 export class Shield extends EquippableObject {
-
-    private _defense: MaxMin;
     
     constructor(id: number,
                 name: string,
@@ -20,12 +18,7 @@ export class Shield extends EquippableObject {
                 maxDef: number) {
         
         super(id, name, grhIndex, type, price, crucial, 
-              forbiddenClasses, anim, null, numRopaje);
-
-        this._defense = new MaxMin(minDef, maxDef);
-    }
-
-    public get defense(): MaxMin {
-        return this._defense;
+              forbiddenClasses, anim, null, numRopaje,
+              new MaxMin(), new MaxMin(maxDef, minDef));
     }
 }

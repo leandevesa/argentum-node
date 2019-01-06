@@ -1,5 +1,6 @@
 import { GameObject } from "./GameObject";
 import { EquippableObject } from "./grabbable/equippable/EquippableObject";
+import { GrabbableObject } from "./grabbable/GrabbableObject";
 
 export module Objects {
     
@@ -11,5 +12,13 @@ export module Objects {
 
     export function getEquippable(id: number): EquippableObject {
         return _objects[id] as EquippableObject;
+    }
+
+    export function getGrabbable(id: number): GrabbableObject {
+        return _objects[id] as GrabbableObject;
+    }
+
+    export function get(id: number): GameObject {
+        return _objects[id];
     }
 }

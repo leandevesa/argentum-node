@@ -3,10 +3,10 @@ import { GrabbableObject } from "../GrabbableObject";
 import { ClassType } from "../../../../player/char/Class";
 import { Race } from "../../../../player/char/Race";
 import { isNullOrUndefined } from "util";
+import { MaxMin } from "../../../../player/stats/MaxMin";
 
 export abstract class EquippableObject extends GrabbableObject {
 
-    
     constructor(id: number,
                 name: string,
                 grhIndex: number,
@@ -16,13 +16,23 @@ export abstract class EquippableObject extends GrabbableObject {
                 private _forbiddenClasses: Array<ClassType>,
                 private _anim: number | null,
                 private _littleRaceAnim: number | null,
-                private _numRompaje: number | null) {
+                private _numRompaje: number | null,
+                private _hit: MaxMin,
+                private _defense: MaxMin) {
 
         super(id, name, grhIndex, type, price, crucial);
     }
 
     public isForbidden(classType: ClassType): boolean {
         return this._forbiddenClasses.indexOf(classType) > -1;
+    }
+
+    public get hit(): MaxMin {
+        return this._hit;
+    }
+
+    public get defense(): MaxMin {
+        return this._defense;
     }
 
     public getNumRompaje(): number {
@@ -47,5 +57,9 @@ export abstract class EquippableObject extends GrabbableObject {
                 throw new Error(`Anim not found: ${this.name}`);
             }
         }
+    }
+
+    public isEquippable(): boolean {
+        return true;
     }
 }

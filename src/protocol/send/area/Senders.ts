@@ -1,4 +1,4 @@
-import { ToPcArea } from "./ToPcArea";
+import { ToPcArea } from "./senders/ToPcArea";
 
 export module Senders {
     export function toPcArea() {

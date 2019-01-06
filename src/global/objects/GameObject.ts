@@ -1,7 +1,6 @@
 import { ObjectType } from "./ObjectType";
 
 export abstract class GameObject {
-
     
     constructor(private _id: number,
                 private _name: string,
@@ -25,5 +24,9 @@ export abstract class GameObject {
 	public get type(): ObjectType {
 		return this._type;
 	}
+
+    public isGrabbable(): boolean {
+        return false;
+    }
 
 }

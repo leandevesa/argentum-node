@@ -41,6 +41,17 @@ export class Serializer {
         return this;
     }
 
+    public single(value: number): Serializer {
+        const buffer = new ArrayBuffer(4);
+        const floatArray = new Float32Array(buffer);
+        floatArray[0] = value;
+        const byteArray = new Uint8Array(buffer);
+        for (let i = 0; i < byteArray.length; i++) {
+            this._byteArray.push(byteArray[i]);
+        }
+        return this;
+    }
+
     public serialize(): Uint8Array {
         return new Uint8Array(this._byteArray);
     }

@@ -4,8 +4,6 @@ import { ClassType } from "../../../../player/char/Class";
 import { EquippableObject } from "./EquippableObject";
 
 export class Weapon extends EquippableObject {
-
-    private _hit: MaxMin;
     
     constructor(id: number,
                 name: string,
@@ -20,12 +18,7 @@ export class Weapon extends EquippableObject {
                 maxHit: number) {
         
         super(id, name, grhIndex, type, price, crucial, 
-              forbiddenClasses, anim, littleRaceAnim, null);
-
-        this._hit = new MaxMin(maxHit, minHit);
-    }
-
-    public get hit(): MaxMin {
-        return this._hit;
+              forbiddenClasses, anim, littleRaceAnim, null,
+              new MaxMin(maxHit, minHit), new MaxMin());
     }
 }

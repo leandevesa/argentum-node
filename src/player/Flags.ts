@@ -2,8 +2,8 @@ export class Flags {
     private _loggedIn: boolean;
     private _death: boolean;
     private _hidden: boolean;
-    private _hunger: number; // TODO: number or boolean?
-    private _thirst: number; // TODO: number or boolean?
+    private _hunger: number;
+    private _thirst: number;
     private _naked: boolean;
     private _paralized: boolean;
 

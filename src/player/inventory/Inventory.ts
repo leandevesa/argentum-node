@@ -33,6 +33,10 @@ export class Inventory {
         return this._slots[slotId].item;
     }
 
+    public getSlots(): Array<Slot> {
+        return this._slots;
+    }
+
     private getFirstFreeSlotNumber(): number | null {
         
         const emptySlots: Array<Slot> = this._slots.filter(slot => !slot.item);

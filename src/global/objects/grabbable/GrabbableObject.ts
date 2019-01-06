@@ -2,7 +2,6 @@ import { ObjectType } from "../ObjectType";
 import { GameObject } from "../GameObject";
 
 export abstract class GrabbableObject extends GameObject {
-
     
     constructor(id: number,
                 name: string,
@@ -14,12 +13,19 @@ export abstract class GrabbableObject extends GameObject {
         super(id, name, grhIndex, type);
     }
 
-
 	public get price(): number {
 		return this._price;
     }
 
 	public get isCrucial(): boolean {
 		return this._crucial;
+    }
+
+    public isEquippable(): boolean {
+        return false;
+    }
+
+    public isGrabbable(): boolean {
+        return true;
     }
 }

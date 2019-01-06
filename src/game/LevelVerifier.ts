@@ -1,9 +1,9 @@
 import { Player } from "../player/Player";
-import { DataSender } from "../protocol/send/DataSender";
 import { WavId } from "../protocol/send/enums/WavId";
-import { Senders } from "../protocol/send/senders/Senders";
-import { DataBufferer } from "../protocol/send/DataBufferer";
-import { SendPackets } from "../protocol/send/packets/SendPackets";
+import { AreaSender } from "../protocol/send/area/AreaSender";
+import { Senders } from "../protocol/send/area/Senders";
+import { PlayerBufferer } from "../protocol/send/bufferers/PlayerBufferer";
+import { PlayWav } from "../protocol/send/packets/PlayWav";
 
 interface SmallStats {
     hp: number;
@@ -17,8 +17,8 @@ export class LevelVerifier {
     private readonly MAX_NEWBIE_LEVEL = 12;
     private readonly MAX_LEVEL = 255; // TODO: Max level 255???
 
-    private dataSender: DataSender = new DataSender();
-    private dataBufferer: DataBufferer = new DataBufferer();
+    private areaSender: AreaSender = new AreaSender();
+    private playerBufferer: PlayerBufferer = new PlayerBufferer();
 
     public verify(player: Player, notifyUser: boolean) {
         
@@ -39,7 +39,7 @@ export class LevelVerifier {
         this.verifyIfNotNewbieAnymore(wasNewbie, player);
         this.verifyGainedSkillPoints(previousSkillPoints, player);
 
-        this.dataBufferer.buffer(player, SendPackets.updateUserStats(player));
+        this.playerBufferer.updateStats(player);
     }
 
     private getStats(player: Player): SmallStats {
@@ -60,8 +60,8 @@ export class LevelVerifier {
         const gainedPoints: number = player.stats.skillPoints - previousSkillPoints;
         const msg: string = `Has ganado un total de ${gainedPoints} skillpoints.`
         
-        this.dataBufferer.buffer(player, SendPackets.levelUp(gainedPoints));
-        this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
+        this.playerBufferer.levelUp(player, gainedPoints);
+        this.playerBufferer.consoleMsg(player, msg);
     }
 
     private verifyIfNotNewbieAnymore(wasNewbie: boolean, player: Player) {
@@ -77,33 +77,33 @@ export class LevelVerifier {
     private notifyLevelUp(player: Player, previousStats: SmallStats,
                           postStats: SmallStats) {
 
-        this.dataSender.send(Senders.toPcArea(), player, 
-                             SendPackets.playWav(WavId.levelUp, player.position));
+        this.areaSender.send(Senders.toPcArea(), player, 
+                             new PlayWav(WavId.levelUp, player.position));
 
-        this.dataBufferer.buffer(player, SendPackets.consoleMsg("¡Has subido de nivel!"));
+        this.playerBufferer.consoleMsg(player, "¡Has subido de nivel!");
 
         const hpIncrease = postStats.hp - previousStats.hp;
         if (hpIncrease > 0) {
             const msg = `Has ganado ${hpIncrease} puntos de vida.`;
-            this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
+            this.playerBufferer.consoleMsg(player, msg);
         }
 
         const staIncrease = postStats.stamina - previousStats.stamina;
         if (staIncrease > 0) {
             const msg = `Has ganado ${staIncrease} puntos de energia.`;
-            this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
+            this.playerBufferer.consoleMsg(player, msg);
         }
 
         const manaIncrease = postStats.mana - previousStats.mana;
         if (manaIncrease > 0) {
             const msg = `Has ganado ${manaIncrease} puntos de mana.`;
-            this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
+            this.playerBufferer.consoleMsg(player, msg);
         }
         
         const hitIncrease = postStats.hit - previousStats.hit;
         if (hitIncrease > 0) {
             const msg = `Tu golpe min/max aumento en ${hitIncrease} puntos.`;
-            this.dataBufferer.buffer(player, SendPackets.consoleMsg(msg));
+            this.playerBufferer.consoleMsg(player, msg);
         }
     }
 

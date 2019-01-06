@@ -1,7 +1,7 @@
-import { Sender } from "./Sender";
-import { Player } from "../../../player/Player";
-import { Maps } from "../../../maps/Maps";
-import { Game } from "../../../game/Game";
+import { Sender } from "../Sender";
+import { Player } from "../../../../player/Player";
+import { Maps } from "../../../../maps/Maps";
+import { Game } from "../../../../game/Game";
 
 export class ToPcArea extends Sender {
     
