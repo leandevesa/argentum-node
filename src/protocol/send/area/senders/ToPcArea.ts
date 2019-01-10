@@ -7,13 +7,14 @@ export class ToPcArea extends Sender {
     
     public send(player: Player, data: string) {
 
-        Maps.getClientsIdInMap(player.position.map)
+       /*  Maps.getMap(player.position.map)
+            .clientIds
             .forEach((otherClientId) => {
                 const otherPlayer: Player | null = Game.getPlayer(otherClientId);
                 if (otherPlayer) {
                     
                     // TODO: Logica de mandarle data a los users del area
                 }
-            });
+            }); */
     }
 }

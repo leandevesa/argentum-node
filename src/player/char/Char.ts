@@ -1,8 +1,7 @@
 import { Heading } from "./Heading";
 
 export class Char {
-    // TODO: Enums instead of numbers ?
-
+    
     private _weaponAnim: number;
     private _shieldAnim: number;
     private _helmetAnim: number;

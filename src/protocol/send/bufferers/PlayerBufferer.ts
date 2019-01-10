@@ -5,6 +5,7 @@ import { LevelUp } from "../packets/LevelUp";
 import { ConsoleMsg } from "../packets/consoleMsg/ConsoleMsg";
 import { FontType } from "../packets/consoleMsg/FontType";
 import { ParalizeOk } from "../packets/ParalizeOk";
+import { UserIndexInServer } from "../packets/UserIndexInServer";
 
 export class PlayerBufferer {
 
@@ -26,6 +27,11 @@ export class PlayerBufferer {
 
     public levelUp(player: Player, gainedSkillPoints: number): void {
         const packet = new LevelUp(gainedSkillPoints);
+        this.bufferHandler.buffer(player, packet);
+    }
+
+    public userIndexInServer(player: Player, userIndex: number): void {
+        const packet = new UserIndexInServer(userIndex);
         this.bufferHandler.buffer(player, packet);
     }
 

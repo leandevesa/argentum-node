@@ -1,11 +1,19 @@
+import { Player } from "../player/Player";
+import { FixedArray } from "../global/FixedArray";
+import { Map } from "./Map";
+
 export module Maps {
 
-    // TODO: Nunca inicializado
-    // TODO: No se agregan users x mapa
-    
-    const playersIdByMap: Array<Array<number>> = new Array();
+    export const MAX_MAPS = 1;
 
-    export function getClientsIdInMap(mapId: number): Array<number> {
-        return playersIdByMap[mapId];
+    const maps: FixedArray<Map> = new FixedArray(MAX_MAPS);
+
+    export function getMap(mapNumber: number): Map {
+        const map = maps.get(mapNumber);
+        if (map) {
+            return map;
+        } else {
+            throw new Error(`Map not found: ${mapNumber}`);
+        }
     }
 }
