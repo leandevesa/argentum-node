@@ -1,15 +1,19 @@
-import { Player } from "../player/Player";
 import { FixedArray } from "../global/FixedArray";
 import { Map } from "./Map";
 
 export module Maps {
 
-    export const MAX_MAPS = 1;
+    export const MAX_MAPS = 300;
+    export const MAX_TILES = 100;
 
-    const maps: FixedArray<Map> = new FixedArray(MAX_MAPS);
+    let _maps: FixedArray<Map>;
+
+    export function setMaps(maps: FixedArray<Map>) {
+        _maps = maps
+    }
 
     export function getMap(mapNumber: number): Map {
-        const map = maps.get(mapNumber);
+        const map = _maps.get(mapNumber);
         if (map) {
             return map;
         } else {

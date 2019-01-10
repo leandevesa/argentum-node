@@ -22,6 +22,7 @@ import { Position } from "../../player/Position";
 import { Inventory } from "../../player/inventory/Inventory";
 import { Exp } from "../../player/stats/Exp";
 import { RaceModifier } from "../../global/balance/RaceModifiers";
+import { Utils } from "../../global/Utils";
 
 export class PlayerMocker {
 
@@ -81,11 +82,13 @@ export class PlayerMocker {
     }
 
     private mockStamina(attributes: Attributes): Stamina {
+        // TODO: Check if randoms are ok
         const stamina = 20 * ((Math.random() * (attributes.agility / 6)) + 2);
         return new Stamina(new MaxMin(stamina, stamina));
     }
 
     private mockHp(attributes: Attributes): Hp {
+        // TODO: Check if randoms are ok
         const hp = 15 + ((Math.random() * (attributes.constitution / 3)) + 1);
         return new Hp(new MaxMin(hp, hp));
     }
@@ -133,19 +136,19 @@ export class PlayerMocker {
 
     private mockPosition(): Position {
         const MAP = 272;
-        const x = (Math.random() * 82) + 72;
-        const entrada = Math.random() * 2;
+        const x = Utils.randomBetween(72, 82);
+        const yRandom = Utils.randomBetween(0, 2);
         const position = new Position();
 
         let y;
-        if (entrada == 0) {
-            y = (Math.random() * 70) + 66;
+        if (yRandom == 0) {
+            y = Utils.randomBetween(66, 70);
         }
-        else if (entrada == 1){
-            y = (Math.random() * 49) + 45;
+        else if (yRandom == 1){
+            y = Utils.randomBetween(45, 49);
         }
-        else if (entrada == 2){
-            y = (Math.random() * 28) + 24;
+        else if (yRandom == 2){
+            y = Utils.randomBetween(24, 28);
         }
 
         position.map = MAP;

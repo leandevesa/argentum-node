@@ -1,6 +1,7 @@
 import { WebSocketServer } from './WebSocketServer';
 import { BalanceLoader } from './global/balance/BalanceLoader';
 import { ObjectsLoader } from './global/objects/ObjectsLoader';
+import { MapsLoader } from './maps/MapsLoader';
 
 class App {
 
@@ -15,6 +16,7 @@ class App {
     private initApp() {
         BalanceLoader.load();
         ObjectsLoader.load();
+        MapsLoader.load();
     }
 }
 

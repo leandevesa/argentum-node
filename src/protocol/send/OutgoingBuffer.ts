@@ -4,7 +4,7 @@ export class OutgoingBuffer {
 
     public write(data: Uint8Array) {
         data.forEach((v) => this._buffer.push(v));
-        console.log(data);
+        //console.log(data);
     }
 
     public get(): Buffer {

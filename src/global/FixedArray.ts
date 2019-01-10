@@ -27,6 +27,12 @@ export class FixedArray<T> {
         return null;
     }
 
+    public pushInCustomIndex(element: T, index: number) {
+        this._array[index] = element;
+        const indexPosition = this._freeIndexes.indexOf(index);
+        this._freeIndexes.splice(indexPosition, 1);
+    }
+
     public remove(index: number): void {
         this._array[index] = null;
         this._freeIndexes.push(index);

@@ -10,6 +10,7 @@ export module ObjectsLoader {
     const objectsBuilder = new ObjectsBuilder();
 
     export function load() {
+		console.log("Loading objects..");
         const fs = require('fs');
         const data: any = JSON.parse(fs.readFileSync(`${ROOT}/objects.json`, 'utf8'));
         const objects = new Array<GameObject>();

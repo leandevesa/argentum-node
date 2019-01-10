@@ -1,3 +1,5 @@
+import { Utils } from "../Utils";
+
 export class HPDistribution {
     
     private _e1: number;
@@ -29,7 +31,7 @@ export class HPDistribution {
     }
 
     private getHalfDeviation(): number {
-		const random: number = Math.random() * 100;
+		const random: number = Utils.randomBetween(0, 100);
 
         // TODO: Load hd1,2,3,4 only once when file is loaded
 
@@ -49,7 +51,7 @@ export class HPDistribution {
     }
 
     private getFullDeviation(): number {
-		const random: number = Math.random() * 100;
+		const random: number = Utils.randomBetween(0, 100);
 
         // TODO: Load f1,2,3,4 only once when file is loaded
 

@@ -4,9 +4,12 @@ import { Coordinates } from "./Coordinates";
 
 export class Map {
     
-    private tiles: Tiles = new Tiles();
+    constructor(private _isPk: boolean,
+                private _tiles: Tiles) {
+
+    }
 
     setPlayer(coordinates: Coordinates, player: Player) {
-        this.tiles.getTileAt(coordinates.x, coordinates.y).player = player;
+        this._tiles.getTileAt(coordinates.x, coordinates.y).player = player;
     }
 }

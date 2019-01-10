@@ -1,22 +1,25 @@
 import { Player } from "../player/Player";
 import { Maps } from "./Maps";
-import { FixedArray } from "../global/FixedArray";
 import { Position } from "../player/Position";
+import { isNullOrUndefined } from "util";
 
 export module Areas {
 
-    const _clientIndexesByMap: FixedArray<Array<number>> = new FixedArray(Maps.MAX_MAPS);
+    const _clientIndexesByMap = new Array<Array<number>>();
 
     export function addPlayer(player: Player, position: Position) {
         addClientId(player.clientIndex, position.map);
     }
 
     function addClientId(clientId: number, mapNumber: number) {
-        const mapClients = _clientIndexesByMap.get(mapNumber);
-        if (mapClients) {
-            if (mapClients.indexOf(clientId) == -1) {
-                mapClients.push(clientId);
-            }
+        let mapClients = _clientIndexesByMap[mapNumber];
+        
+        if (isNullOrUndefined(mapClients)) {
+            mapClients = new Array<number>();
+        }
+
+        if (mapClients.indexOf(clientId) == -1) {
+            mapClients.push(clientId);
         }
     }
 }

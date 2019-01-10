@@ -1,5 +1,7 @@
 from struct import *
 import ctypes
+import jsonpickle
+
 c_uint8 = ctypes.c_uint8
 
 class Dat_Flags_bits( ctypes.LittleEndianStructure ):
@@ -96,8 +98,8 @@ MAX_BOUNDS = 100
 
 aMap = Map()
 
-with open('mapa1.map', 'rb') as mapData:
-    with open('mapa1.inf', 'rb') as mapInfo:
+with open('mapa272.map', 'rb') as mapData:
+    with open('mapa272.inf', 'rb') as mapInfo:
 
         tiles = [[0 for x in range(MAX_BOUNDS)] for y in range(MAX_BOUNDS)]
 
@@ -156,7 +158,7 @@ with open('mapa1.map', 'rb') as mapData:
 
         aMap.tiles = tiles
 
-dat_lines = [line.rstrip('\n').rstrip('\r').strip() for line in open('mapa1.dat')]
+dat_lines = [line.rstrip('\n').rstrip('\r').strip() for line in open('mapa272.dat')]
 
 for idx,line in enumerate(dat_lines):
     if line.startswith("Name") > 0:
@@ -170,3 +172,7 @@ for idx,line in enumerate(dat_lines):
     elif line.startswith("Pk") > 0:
         aMap.pk = bool(int(line[3:]))
         
+mapJSON = jsonpickle.encode(aMap, unpicklable=False)
+
+with open("mapa272.json", "w") as out:
+    out.write(mapJSON)

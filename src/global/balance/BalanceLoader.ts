@@ -8,6 +8,7 @@ export module BalanceLoader {
     const ROOT = 'dat/balance';
 
     export function load() {
+		console.log("Loading balance..");
         const fs = require('fs');
 
         Balance.setRaceModifiers(loadRaceModifiers(fs));
